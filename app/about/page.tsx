@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 const stats = [
-  { number: '500+', label: 'Happy Clients' },
-  { number: '10+', label: 'Years Experience' },
+  { number: '100%', label: 'Student-Run' },
+  { number: 'Free', label: 'In-Person Quotes' },
   { number: '5.0', label: 'Google Rating' },
-  { number: '1000+', label: 'Projects Completed' },
+  { number: 'Local', label: 'SA Students' },
 ];
 
 const values = [
@@ -84,8 +84,8 @@ export default function AboutPage() {
               Our Story
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
-              Get to know the team behind Blade Landscaping and learn why we&apos;re San Antonio&apos;s
-              trusted choice for professional landscaping services.
+              We&apos;re a team of hardworking college and high school students bringing fresh energy
+              and dedication to landscaping in San Antonio.
             </p>
           </div>
         </div>
@@ -135,22 +135,23 @@ export default function AboutPage() {
                 Who We Are
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--blade-charcoal)] mb-6">
-                Transforming Outdoor Spaces in San Antonio
+                Students Working Hard for Your Yard
               </h2>
               <div className="space-y-4 text-[var(--blade-gray)] text-lg leading-relaxed">
                 <p>
-                  Blade Landscaping was founded with a simple mission: to provide San Antonio
-                  homeowners and businesses with exceptional landscaping services at fair prices.
+                  Blade Landscaping is proudly owned and operated by local students. We&apos;re college
+                  and high school students who started this business to earn money, build real-world
+                  skills, and serve our San Antonio community.
                 </p>
                 <p>
-                  What started as a passion for creating beautiful outdoor spaces has grown into
-                  a trusted landscaping company serving hundreds of satisfied customers across
-                  the greater San Antonio area.
+                  What sets us apart? <strong>Every quote is given in person.</strong> We believe in
+                  meeting you face-to-face, walking your property together, and understanding exactly
+                  what you need. No guessing, no surprises—just honest, professional service with a
+                  personal touch.
                 </p>
                 <p>
-                  We take pride in our work and treat every property as if it were our own.
-                  From routine lawn maintenance to complete landscape transformations, we bring
-                  the same level of dedication and expertise to every project.
+                  We may be young, but we work hard and take pride in every job. When you hire Blade
+                  Landscaping, you&apos;re supporting local students while getting quality results at fair prices.
                 </p>
               </div>
             </div>
@@ -225,11 +226,11 @@ export default function AboutPage() {
               Our Team
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--blade-charcoal)] mb-6">
-              Meet the Experts
+              Meet the Students
             </h2>
             <p className="text-[var(--blade-gray)] text-lg leading-relaxed">
-              Our skilled professionals are passionate about landscaping and dedicated to
-              exceeding your expectations.
+              We&apos;re a crew of motivated college and high school students who love working outdoors
+              and take pride in making your property look amazing.
             </p>
           </div>
 
@@ -258,11 +259,12 @@ export default function AboutPage() {
               </div>
               <div className="p-8 text-center">
                 <h3 className="text-2xl font-bold text-[var(--blade-charcoal)] mb-2">
-                  Blade Landscaping Team
+                  Blade Landscaping Crew
                 </h3>
-                <p className="text-[var(--blade-green)] font-semibold mb-4">Professional Landscapers</p>
+                <p className="text-[var(--blade-green)] font-semibold mb-4">Local Student Workers</p>
                 <p className="text-[var(--blade-gray)]">
-                  Our experienced team brings dedication and expertise to every project, ensuring your outdoor space looks its absolute best.
+                  College and high school students working hard to earn money and build skills while making
+                  San Antonio yards look their best. Support local students!
                 </p>
               </div>
             </div>
@@ -278,8 +280,8 @@ export default function AboutPage() {
               Ready to Get Started?
             </h2>
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Contact us today to discuss your landscaping needs and get a free quote.
-              We&apos;re excited to help transform your outdoor space!
+              Schedule your free in-person quote today. We&apos;ll come to your property, meet you
+              face-to-face, and give you an honest estimate with no pressure.
             </p>
             <Link href="/contact" className="btn-white text-lg px-8 py-4">
               Contact Us Today

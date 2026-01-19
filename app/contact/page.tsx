@@ -15,8 +15,8 @@ export default function ContactPage() {
               Contact Us
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
-              Ready to transform your outdoor space? Get in touch with us today for a free
-              quote and consultation.
+              Ready to transform your outdoor space? We provide free in-person quotes—we&apos;ll
+              come to you, meet face-to-face, and give you an honest estimate.
             </p>
           </div>
         </div>
@@ -29,10 +29,11 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-[var(--blade-charcoal)] mb-2">
-                Send Us a Message
+                Schedule Your Free In-Person Quote
               </h2>
               <p className="text-[var(--blade-gray)] mb-8">
-                Fill out the form below and we&apos;ll get back to you within 24 hours.
+                Fill out the form below and we&apos;ll reach out to schedule a time to visit your property
+                and give you a professional, personalized estimate.
               </p>
               <ContactForm />
             </div>
@@ -60,7 +61,7 @@ export default function ContactPage() {
                       (210) 802-5469
                     </a>
                     <p className="text-sm text-[var(--blade-gray)] mt-1">
-                      Text us for quotes and inquiries
+                      Call or text to schedule your in-person quote
                     </p>
                   </div>
                 </div>

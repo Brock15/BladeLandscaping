@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 
 const testimonials = [
   {
@@ -73,7 +74,7 @@ export default function Testimonials() {
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-block text-[var(--blade-lime)] font-semibold text-sm uppercase tracking-wider mb-4">
             Testimonials
           </span>
@@ -88,7 +89,7 @@ export default function Testimonials() {
 
         {/* Rating Badge */}
         <div
-          className={`flex justify-center mb-12 transition-all duration-700 ${
+          className={`flex flex-col items-center gap-4 mb-12 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}
         >
@@ -108,6 +109,15 @@ export default function Testimonials() {
             <span className="text-white font-semibold">5.0</span>
             <span className="text-[var(--blade-silver)]">from 47+ reviews</span>
           </div>
+          <Link
+            href="/reviews"
+            className="text-[var(--blade-lime)] hover:text-white font-medium text-sm transition-colors flex items-center gap-1"
+          >
+            See More Reviews
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
         </div>
 
         {/* Testimonials Carousel */}

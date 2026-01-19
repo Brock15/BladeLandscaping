@@ -27,28 +27,25 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-3'
+        isScrolled || isMobileMenuOpen
+          ? 'bg-gradient-to-r from-[var(--blade-charcoal)] via-[var(--blade-slate)] to-[var(--blade-green-dark)] shadow-lg py-3'
           : 'bg-transparent py-5'
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 transition-transform group-hover:scale-105">
+          <Link href="/" className="flex items-center gap-0 group">
+            <div className="relative w-16 h-16 -mr-1 transition-transform group-hover:scale-105">
               <Image
-                src="/logo.svg"
+                src="/BladeAndLeaf.png"
                 alt="Blade Landscaping"
                 fill
                 className="object-contain"
                 priority
               />
             </div>
-            <span
-              className={`text-xl font-bold transition-colors ${
-                isScrolled ? 'text-[var(--blade-charcoal)]' : 'text-white'
-              }`}
+            <span className="text-xl font-bold text-white"
             >
               Blade Landscaping
             </span>
@@ -60,9 +57,7 @@ export default function Navigation() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-medium transition-colors hover:text-[var(--blade-green)] ${
-                  isScrolled ? 'text-[var(--blade-gray)]' : 'text-white/90'
-                }`}
+                className="font-medium transition-colors hover:text-[var(--blade-lime)] text-white/90"
               >
                 {link.label}
               </Link>
@@ -79,35 +74,27 @@ export default function Navigation() {
             aria-label="Toggle menu"
           >
             <span
-              className={`w-6 h-0.5 transition-all ${
-                isScrolled ? 'bg-[var(--blade-charcoal)]' : 'bg-white'
-              } ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
+              className={`w-6 h-0.5 transition-all bg-white ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
             />
             <span
-              className={`w-6 h-0.5 transition-all ${
-                isScrolled ? 'bg-[var(--blade-charcoal)]' : 'bg-white'
-              } ${isMobileMenuOpen ? 'opacity-0' : ''}`}
+              className={`w-6 h-0.5 transition-all bg-white ${isMobileMenuOpen ? 'opacity-0' : ''}`}
             />
             <span
-              className={`w-6 h-0.5 transition-all ${
-                isScrolled ? 'bg-[var(--blade-charcoal)]' : 'bg-white'
-              } ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
+              className={`w-6 h-0.5 transition-all bg-white ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}
             />
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mobile-menu-enter mt-4 pb-4 border-t border-[var(--blade-light)]">
+          <div className="lg:hidden mobile-menu-enter mt-4 pb-4 border-t border-white/20">
             <div className="flex flex-col gap-4 pt-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`font-medium text-lg transition-colors hover:text-[var(--blade-green)] ${
-                    isScrolled ? 'text-[var(--blade-gray)]' : 'text-white'
-                  }`}
+                  className="font-medium text-lg transition-colors hover:text-[var(--blade-lime)] text-white/90"
                 >
                   {link.label}
                 </Link>

@@ -29,10 +29,10 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="relative w-12 h-12">
                 <Image
-                  src="/logo.svg"
+                  src="/BladeAndLeaf.png"
                   alt="Blade Landscaping"
                   fill
-                  className="object-contain brightness-0 invert"
+                  className="object-contain"
                 />
               </div>
               <span className="text-xl font-bold">Blade Landscaping</span>

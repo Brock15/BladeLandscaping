@@ -6,20 +6,12 @@ const features = [
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 7l9-5-9-5-9 5 9 5z" />
       </svg>
     ),
-    title: 'Licensed & Insured',
-    description: 'Fully licensed and insured for your peace of mind on every project.',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: 'Same-Day Response',
-    description: 'We respond to all inquiries within the same business day.',
+    title: 'Student-Owned',
+    description: 'Run by hardworking college and high school students from San Antonio.',
   },
   {
     icon: (
@@ -27,17 +19,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     ),
-    title: 'Experienced Team',
-    description: 'Our skilled professionals bring years of landscaping expertise.',
-  },
-  {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    ),
-    title: 'Fair Pricing',
-    description: 'Competitive rates with no hidden fees or surprise charges.',
+    title: 'In-Person Quotes',
+    description: 'We meet you at your property to give professional, personalized estimates.',
   },
   {
     icon: (
@@ -45,17 +28,35 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
       </svg>
     ),
-    title: 'Customer Focused',
-    description: 'Your satisfaction is our priority from start to finish.',
+    title: 'Personal Touch',
+    description: 'Small team means you get direct communication and real relationships.',
   },
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'Eco-Friendly',
-    description: 'Sustainable practices that are better for your yard and the environment.',
+    title: 'Student-Friendly Prices',
+    description: 'Quality work at fair rates. We understand budgets because we live them too.',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: 'Flexible Scheduling',
+    description: 'We work around your schedule with evening and weekend availability.',
+  },
+  {
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    title: 'Reliable & Dedicated',
+    description: 'We show up on time and work hard. Your satisfaction is our reputation.',
   },
 ];
 
@@ -94,13 +95,13 @@ export default function WhyChooseUs() {
               Why Choose Us
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--blade-charcoal)] mb-6">
-              San Antonio&apos;s Trusted
-              <span className="text-[var(--blade-green)]"> Landscaping</span> Experts
+              <span className="text-[var(--blade-green)]">Student-Run</span> with
+              Professional Results
             </h2>
             <p className="text-[var(--blade-gray)] text-lg leading-relaxed mb-8">
-              At Blade Landscaping, we&apos;re committed to transforming your outdoor spaces with
-              professional care and attention to detail. Our team brings expertise, reliability,
-              and a passion for creating beautiful landscapes.
+              Blade Landscaping is proudly owned and operated by local college and high school students.
+              We bring fresh energy, hard work, and a commitment to quality. Every quote is given in person
+              because we believe in building real relationships with our customers.
             </p>
 
             {/* Features Grid */}
@@ -158,16 +159,16 @@ export default function WhyChooseUs() {
               </div>
 
               {/* Floating Stats Card */}
-              <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-xl p-6 max-w-[200px]">
+              <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-xl p-6 max-w-[220px]">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-12 h-12 bg-[var(--blade-green)] rounded-full flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-[var(--blade-charcoal)]">500+</div>
-                    <div className="text-sm text-[var(--blade-gray)]">Projects Done</div>
+                    <div className="text-2xl font-bold text-[var(--blade-charcoal)]">100%</div>
+                    <div className="text-sm text-[var(--blade-gray)]">Student Team</div>
                   </div>
                 </div>
               </div>

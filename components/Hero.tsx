@@ -41,7 +41,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
             <span className="w-2 h-2 bg-[var(--blade-green-light)] rounded-full animate-pulse" />
-            <span className="text-sm font-medium">San Antonio&apos;s Trusted Landscaping Partner</span>
+            <span className="text-sm font-medium">Student-Owned & Operated in San Antonio</span>
           </div>
 
           {/* Main Heading */}
@@ -53,8 +53,8 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Professional landscaping services including lawn care, mulching, planting, removal,
-            and more. We bring your outdoor vision to life.
+            Student-run landscaping with professional results. We provide free in-person quotes
+            with a personal touch. Lawn care, mulching, planting, and more.
           </p>
 
           {/* CTA Buttons */}
@@ -78,10 +78,10 @@ export default function Hero() {
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
             {[
-              { number: '500+', label: 'Happy Clients' },
+              { number: '100%', label: 'Student-Run' },
+              { number: 'Free', label: 'In-Person Quotes' },
               { number: '5.0', label: 'Google Rating' },
-              { number: '10+', label: 'Years Experience' },
-              { number: '24/7', label: 'Customer Support' },
+              { number: 'Local', label: 'SA Students' },
             ].map((stat, index) => (
               <div
                 key={stat.label}
