@@ -3,8 +3,24 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
+type ReviewSource = 'google' | 'nextdoor' | 'other';
+
+type Review = {
+  id: number;
+  name: string;
+  reviewCount: string;
+  rating: number;
+  text: string;
+  timeAgo: string;
+  initials: string;
+  color: string;
+  hasPhoto: boolean;
+  source: ReviewSource;
+  photoUrls?: string[];
+};
+
 // Real Google reviews
-const googleReviews = [
+const googleReviews: Review[] = [
   {
     id: 1,
     name: 'Katie Pane',
@@ -73,7 +89,7 @@ const googleReviews = [
 ];
 
 // Additional testimonials (not from Google)
-const additionalReviews = [
+const additionalReviews: Review[] = [
   {
     id: 6,
     name: 'Maria Rodriguez',
@@ -148,7 +164,7 @@ const additionalReviews = [
   },
 ];
 
-const allReviews = [...googleReviews, ...additionalReviews];
+const allReviews: Review[] = [...googleReviews, ...additionalReviews];
 
 export default function ReviewsPage() {
   const [isVisible, setIsVisible] = useState(false);
