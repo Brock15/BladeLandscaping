@@ -48,17 +48,6 @@ const services = [
     ),
     gradient: 'from-green-600 to-teal-700',
   },
-  {
-    id: 'lawn-care',
-    title: 'Lawn Care',
-    description: 'Professional mowing, edging, and blowing to keep your lawn pristine and healthy.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-    ),
-    gradient: 'from-emerald-500 to-green-700',
-  },
 ];
 
 export default function Services() {
@@ -100,7 +89,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div
               key={service.id}

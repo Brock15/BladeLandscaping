@@ -29,12 +29,6 @@ const galleryItems = [
     imageUrl: '/media/gallery/photos/mulcharcher.png',
   },
   {
-    id: 3,
-    title: 'Pristine Lawn Maintenance',
-    category: 'Lawn Care',
-    gradient: gradients[2],
-  },
-  {
     id: 4,
     title: 'Stone Pathway Installation',
     category: 'Hardscape',
@@ -82,12 +76,6 @@ const galleryItems = [
     title: 'Native Plant Garden',
     category: 'Planting',
     gradient: gradients[4],
-  },
-  {
-    id: 12,
-    title: 'Weekly Lawn Service',
-    category: 'Lawn Care',
-    gradient: gradients[5],
   },
   {
     id: 13,
@@ -276,13 +264,6 @@ export default function GalleryPage() {
             ))}
           </div>
 
-          {/* Note about images */}
-          <div className="text-center mt-12 p-6 bg-white rounded-2xl shadow-md">
-            <p className="text-[var(--blade-gray)]">
-              <span className="font-semibold text-[var(--blade-charcoal)]">Coming Soon:</span> Real project photos will be added as we complete more landscaping projects.
-              Contact us to see examples of our recent work!
-            </p>
-          </div>
         </div>
       </section>
     </>
