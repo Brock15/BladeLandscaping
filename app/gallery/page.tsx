@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Before & After'];
+const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Weed Barrier', 'Sodding', 'Before & After'];
 
 const gradients = [
   'from-emerald-500 to-green-700',
@@ -19,12 +19,14 @@ const galleryItems = [
     title: 'Modern Front Yard Design',
     category: 'Planting',
     gradient: gradients[0],
+    videoUrl: '/media/gallery/videos/IMG_1526.mp4',
   },
   {
     id: 2,
     title: 'Fresh Mulch Installation',
     category: 'Mulching',
     gradient: gradients[1],
+    imageUrl: '/media/gallery/photos/mulcharcher.png',
   },
   {
     id: 3,
@@ -61,6 +63,7 @@ const galleryItems = [
     title: 'Garden Bed Refresh',
     category: 'Mulching',
     gradient: gradients[1],
+    imageUrl: '/media/gallery/photos/mulchbackyard.jpg',
   },
   {
     id: 9,
@@ -85,6 +88,20 @@ const galleryItems = [
     title: 'Weekly Lawn Service',
     category: 'Lawn Care',
     gradient: gradients[5],
+  },
+  {
+    id: 13,
+    title: 'Weed Barrier Install',
+    category: 'Weed Barrier',
+    gradient: gradients[2],
+    imageUrl: '/media/gallery/photos/image.png',
+  },
+  {
+    id: 14,
+    title: 'Sod Installation',
+    category: 'Sodding',
+    gradient: gradients[4],
+    videoUrl: '/media/homepage/videos/sodding.mp4',
   },
 ];
 
@@ -207,20 +224,38 @@ export default function GalleryPage() {
                 }`}
                 style={{ transitionDelay: `${index * 50}ms` }}
               >
-                {/* Gradient Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}>
-                  {/* Decorative pattern */}
-                  <div className="absolute inset-0 opacity-20">
-                    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <defs>
-                        <pattern id={`gallery-pattern-${item.id}`} patternUnits="userSpaceOnUse" width="15" height="15">
-                          <circle cx="7.5" cy="7.5" r="1" fill="white"/>
-                        </pattern>
-                      </defs>
-                      <rect width="100" height="100" fill={`url(#gallery-pattern-${item.id})`}/>
-                    </svg>
+                {/* Background */}
+                {item.videoUrl ? (
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={item.videoUrl}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : item.imageUrl ? (
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}>
+                    {/* Decorative pattern */}
+                    <div className="absolute inset-0 opacity-20">
+                      <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                          <pattern id={`gallery-pattern-${item.id}`} patternUnits="userSpaceOnUse" width="15" height="15">
+                            <circle cx="7.5" cy="7.5" r="1" fill="white"/>
+                          </pattern>
+                        </defs>
+                        <rect width="100" height="100" fill={`url(#gallery-pattern-${item.id})`}/>
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Center Icon */}
                 <div className="absolute inset-0 flex items-center justify-center text-white/50 group-hover:text-white/80 group-hover:scale-110 transition-all duration-300">

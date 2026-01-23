@@ -15,6 +15,7 @@ const googleReviews = [
     initials: 'K',
     color: 'bg-purple-500',
     hasPhoto: false,
+    source: 'google',
   },
   {
     id: 2,
@@ -26,6 +27,7 @@ const googleReviews = [
     initials: 'A',
     color: 'bg-blue-500',
     hasPhoto: false,
+    source: 'google',
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ const googleReviews = [
     initials: 'S',
     color: 'bg-green-500',
     hasPhoto: true,
+    source: 'google',
   },
   {
     id: 4,
@@ -48,6 +51,7 @@ const googleReviews = [
     initials: 'A',
     color: 'bg-pink-500',
     hasPhoto: true,
+    source: 'google',
   },
   {
     id: 5,
@@ -59,6 +63,12 @@ const googleReviews = [
     initials: 'F',
     color: 'bg-orange-500',
     hasPhoto: true,
+    photoUrls: [
+      '/reviews/fed-bread-1.png',
+      '/reviews/fed-bread-2.png',
+      '/reviews/fed-bread-3.png',
+    ],
+    source: 'google',
   },
 ];
 
@@ -74,7 +84,7 @@ const additionalReviews = [
     initials: 'MR',
     color: 'bg-emerald-500',
     hasPhoto: false,
-    isGoogle: false,
+    source: 'other',
   },
   {
     id: 7,
@@ -86,7 +96,7 @@ const additionalReviews = [
     initials: 'JT',
     color: 'bg-cyan-500',
     hasPhoto: false,
-    isGoogle: false,
+    source: 'other',
   },
   {
     id: 8,
@@ -98,14 +108,47 @@ const additionalReviews = [
     initials: 'SC',
     color: 'bg-violet-500',
     hasPhoto: false,
-    isGoogle: false,
+    source: 'other',
+  },
+  {
+    id: 9,
+    name: 'Theresa Fan',
+    reviewCount: 'The Champions Estates',
+    rating: 5,
+    text: 'Brock and his team came out for an estimate, got to work at the date and time promised, worked very diligently and professionally and, did a wonderful, meticulous job at applying 5 yards of black mulch to our yard. I highly recommend Blade Landscaping for all your Landscaping needs.',
+    timeAgo: 'recently',
+    initials: 'TF',
+    color: 'bg-lime-600',
+    hasPhoto: false,
+    source: 'nextdoor',
+  },
+  {
+    id: 10,
+    name: 'Margaret White',
+    reviewCount: 'Oakwood',
+    rating: 5,
+    text: 'Blade Landscape weeded two large flower beds in my yard, one of which had many oak sappers. They arrived promptly, did a thorough job, and left my beds looking lovely. The team of two was polite and easy to work with. I highly recommend them for your smaller landscape needs.',
+    timeAgo: 'recently',
+    initials: 'MW',
+    color: 'bg-teal-600',
+    hasPhoto: false,
+    source: 'nextdoor',
+  },
+  {
+    id: 11,
+    name: 'Saundra Edwards',
+    reviewCount: 'Deerfield',
+    rating: 5,
+    text: 'I was very pleased with help planting three shrubs in my yard recently. These high school guys have integrity and a desire to do a good job. So refreshing!!',
+    timeAgo: 'recently',
+    initials: 'SE',
+    color: 'bg-emerald-600',
+    hasPhoto: false,
+    source: 'nextdoor',
   },
 ];
 
-const allReviews = [
-  ...googleReviews.map(r => ({ ...r, isGoogle: true })),
-  ...additionalReviews
-];
+const allReviews = [...googleReviews, ...additionalReviews];
 
 export default function ReviewsPage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -159,7 +202,7 @@ export default function ReviewsPage() {
               <div className="flex items-center justify-center gap-3 mb-2">
                 <div className="text-6xl font-bold text-[var(--blade-charcoal)]">5.0</div>
                 {/* Platform Icons */}
-                <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
                   {/* Google */}
                   <svg className="w-8 h-8" viewBox="0 0 24 24">
                     <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -230,12 +273,17 @@ export default function ReviewsPage() {
                     <h3 className="font-semibold text-[var(--blade-charcoal)]">{review.name}</h3>
                     <p className="text-[var(--blade-gray)] text-sm">{review.reviewCount}</p>
                   </div>
-                  {review.isGoogle && (
+                  {review.source === 'google' && (
                     <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                       <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
                       <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
                       <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                    </svg>
+                  )}
+                  {review.source === 'nextdoor' && (
+                    <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="#8ED500">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14.5h-2v-4c0-1.1-.9-2-2-2h-1v6h-2V9h3c2.21 0 4 1.79 4 4v3.5z"/>
                     </svg>
                   )}
                 </div>
@@ -251,15 +299,29 @@ export default function ReviewsPage() {
                   {review.text}
                 </p>
 
-                {/* Photo placeholder */}
-                {review.hasPhoto && (
+                {/* Photos */}
+                {review.photoUrls?.length ? (
                   <div className="flex gap-2 mt-4">
-                    <div className="w-20 h-20 bg-[var(--blade-off-white)] rounded-lg flex items-center justify-center text-[var(--blade-gray)]">
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
+                    {review.photoUrls.map((url, photoIndex) => (
+                      <img
+                        key={`${review.id}-${photoIndex}`}
+                        src={url}
+                        alt={`${review.name} review photo ${photoIndex + 1}`}
+                        className="w-20 h-20 object-cover rounded-lg"
+                        loading="lazy"
+                      />
+                    ))}
                   </div>
+                ) : (
+                  review.hasPhoto && (
+                    <div className="flex gap-2 mt-4">
+                      <div className="w-20 h-20 bg-[var(--blade-off-white)] rounded-lg flex items-center justify-center text-[var(--blade-gray)]">
+                        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    </div>
+                  )
                 )}
               </div>
             ))}
