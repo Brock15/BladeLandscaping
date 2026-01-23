@@ -194,6 +194,28 @@ export default function Testimonials() {
             ))}
           </div>
         </div>
+
+        {/* Used by */}
+        <div className="mt-12 flex flex-col items-center gap-4">
+          <span className="text-xs uppercase tracking-[0.3em] text-white/50">
+            Used By
+          </span>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-3xl">
+            {[
+              { name: 'Ferguson Plastic Surgery', sub: 'Plastic Surgery' },
+              { name: "Women's Health", sub: 'Wellness Clinic' },
+              { name: 'Makeup Studio', sub: 'Beauty & Makeup' },
+            ].map((biz) => (
+              <div
+                key={biz.name}
+                className="rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center"
+              >
+                <div className="text-sm font-semibold text-white">{biz.name}</div>
+                <div className="text-xs text-white/60">{biz.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

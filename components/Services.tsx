@@ -14,6 +14,9 @@ const services = [
       </svg>
     ),
     gradient: 'from-amber-600 to-orange-800',
+    videoUrl: '/media/homepage/videos/IMG_2526.mp4',
+    loopStart: 0,
+    loopEnd: 5,
   },
   {
     id: 'installations',
@@ -25,6 +28,9 @@ const services = [
       </svg>
     ),
     gradient: 'from-slate-600 to-slate-800',
+    videoUrl: '/media/homepage/videos/commercial-jobs.mp4',
+    loopStart: 2,
+    loopEnd: 12,
   },
   {
     id: 'removal',
@@ -99,20 +105,50 @@ export default function Services() {
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               {/* Gradient Background */}
-              <div className="relative h-48 overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}>
-                  {/* Decorative pattern */}
-                  <div className="absolute inset-0 opacity-20">
-                    <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                      <defs>
-                        <pattern id={`pattern-${service.id}`} patternUnits="userSpaceOnUse" width="20" height="20">
-                          <circle cx="10" cy="10" r="1" fill="white"/>
-                        </pattern>
-                      </defs>
-                      <rect width="100" height="100" fill={`url(#pattern-${service.id})`}/>
-                    </svg>
+              <div className="relative h-64 overflow-hidden">
+                {service.videoUrl ? (
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={service.videoUrl}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    onLoadedMetadata={(event) => {
+                      const video = event.currentTarget;
+                      const startTime = service.loopStart ?? 0;
+                      if (startTime > 0) {
+                        video.currentTime = startTime;
+                      }
+                    }}
+                    onTimeUpdate={(event) => {
+                      const video = event.currentTarget;
+                      const startTime = service.loopStart ?? 0;
+                      const endTime = service.loopEnd ?? 5;
+                      if (video.currentTime < startTime) {
+                        video.currentTime = startTime;
+                        return;
+                      }
+                      if (video.currentTime >= endTime) {
+                        video.currentTime = startTime;
+                      }
+                    }}
+                  />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient}`}>
+                    {/* Decorative pattern */}
+                    <div className="absolute inset-0 opacity-20">
+                      <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                          <pattern id={`pattern-${service.id}`} patternUnits="userSpaceOnUse" width="20" height="20">
+                            <circle cx="10" cy="10" r="1" fill="white"/>
+                          </pattern>
+                        </defs>
+                        <rect width="100" height="100" fill={`url(#pattern-${service.id})`}/>
+                      </svg>
+                    </div>
                   </div>
-                </div>
+                )}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">
                     {service.icon}

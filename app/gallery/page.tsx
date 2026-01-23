@@ -26,7 +26,7 @@ const galleryItems = [
     title: 'Fresh Mulch Installation',
     category: 'Mulching',
     gradient: gradients[1],
-    imageUrl: '/media/gallery/photos/mulcharcher.png',
+    videoUrl: '/media/homepage/videos/IMG_2526.mp4',
   },
   {
     id: 4,
@@ -221,6 +221,12 @@ export default function GalleryPage() {
                     muted
                     loop
                     playsInline
+                    onTimeUpdate={(event) => {
+                      const video = event.currentTarget;
+                      if (video.currentTime >= 5) {
+                        video.currentTime = 0;
+                      }
+                    }}
                   />
                 ) : item.imageUrl ? (
                   <img
