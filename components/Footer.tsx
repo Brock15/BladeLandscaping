@@ -43,7 +43,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/blade_landscaping/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[var(--blade-slate)] flex items-center justify-center hover:bg-[var(--blade-green)] transition-colors"
@@ -65,14 +65,14 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://nextdoor.com"
+                href="https://nextdoor.com/pages/blade_landscaping-san-antonio-tx/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[var(--blade-slate)] flex items-center justify-center hover:bg-[var(--blade-green)] transition-colors"
                 aria-label="Nextdoor"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm3.5 14.5h-7v-2h7v2zm0-4h-7v-2h7v2zm0-4h-7v-2h7v2z" />
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="#8ED500">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.5 14.5h-2v-4c0-1.1-.9-2-2-2h-1v6h-2V9h3c2.21 0 4 1.79 4 4v3.5z"/>
                 </svg>
               </a>
             </div>
