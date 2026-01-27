@@ -5,27 +5,6 @@ import Link from 'next/link';
 
 const services = [
   {
-    id: 'lawn-care',
-    title: 'Lawn Care',
-    subtitle: 'Professional Lawn Maintenance',
-    description:
-      'Keep your lawn looking its best with our comprehensive lawn care services. We provide regular mowing, edging, blowing, and trimming to maintain a pristine appearance year-round.',
-    features: [
-      'Weekly or bi-weekly mowing',
-      'Professional edging along walkways and beds',
-      'Debris removal and cleanup',
-      'Seasonal aeration and overseeding',
-      'Weed control treatments',
-      'Fertilization programs',
-    ],
-    gradient: 'from-emerald-500 to-green-700',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-      </svg>
-    ),
-  },
-  {
     id: 'mulching',
     title: 'Mulching',
     subtitle: 'Garden Bed Enhancement',
@@ -47,44 +26,23 @@ const services = [
     ),
   },
   {
-    id: 'planting',
-    title: 'Planting',
-    subtitle: 'Expert Plant Installation',
+    id: 'installations',
+    title: 'Installations',
+    subtitle: 'Professional Install Services',
     description:
-      'From colorful annuals to mature trees, our planting services bring your landscape vision to life. We carefully select plants suited to San Antonio\'s climate for long-lasting beauty.',
+      'Professional installation of pavers, stones, landscape fabric, borders, and more. We ensure clean lines, long-lasting durability, and a polished finish.',
     features: [
-      'Native and adapted plant selection',
-      'Seasonal flower installations',
-      'Shrub and tree planting',
-      'Proper soil preparation',
-      'Drip irrigation integration',
-      'Plant care guidance',
+      'Landscape fabric and weed barrier installs',
+      'Stone, rock, and gravel placement',
+      'Paver and edging installs',
+      'Garden bed borders and separators',
+      'Site prep and leveling',
+      'Cleanup and haul-away',
     ],
-    gradient: 'from-green-600 to-teal-700',
+    gradient: 'from-slate-600 to-slate-800',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-      </svg>
-    ),
-  },
-  {
-    id: 'weeding',
-    title: 'Weeding',
-    subtitle: 'Garden Bed Maintenance',
-    description:
-      'Keep your garden beds clean and healthy with our thorough weeding services. We remove unwanted vegetation and implement prevention strategies for lasting results.',
-    features: [
-      'Complete weed removal by hand',
-      'Root extraction to prevent regrowth',
-      'Pre-emergent herbicide application',
-      'Bed cultivation and refreshing',
-      'Ongoing maintenance programs',
-      'Eco-friendly treatment options',
-    ],
-    gradient: 'from-lime-600 to-green-800',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
       </svg>
     ),
   },
@@ -127,6 +85,27 @@ const services = [
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'moving',
+    title: 'Moving',
+    subtitle: 'Heavy Lifting & Hauling',
+    description:
+      'Careful moving help for heavy items, furniture, and yard materials. We show up on time and handle your items with care.',
+    features: [
+      'Furniture and item moving',
+      'Loading and unloading help',
+      'Short-distance relocations',
+      'Garage and storage moves',
+      'Protective handling and placement',
+      'Cleanup after the move',
+    ],
+    gradient: 'from-lime-600 to-green-800',
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h8m4 4H4m12 4H8m8-8v10a2 2 0 01-2 2H10a2 2 0 01-2-2V7m8 0l-1.5-3h-5L8 7" />
       </svg>
     ),
   },
