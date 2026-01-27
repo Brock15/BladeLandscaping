@@ -40,6 +40,8 @@ const services = [
       'Cleanup and haul-away',
     ],
     gradient: 'from-slate-600 to-slate-800',
+    beforeVideoUrl: '/media/gallery/videos/before.mp4',
+    afterVideoUrl: '/media/gallery/videos/after.mp4',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -113,6 +115,7 @@ const services = [
 
 export default function ServicesPage() {
   const [isVisible, setIsVisible] = useState(false);
+  const [installationsVideo, setInstallationsVideo] = useState<'before' | 'after'>('before');
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -169,6 +172,60 @@ export default function ServicesPage() {
                 {/* Visual - alternating sides */}
                 <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br ${service.gradient}`}>
+                    {service.beforeVideoUrl && service.afterVideoUrl ? (
+                      <div className="absolute inset-0 grid grid-cols-2">
+                        <video
+                          key={installationsVideo}
+                          className="col-span-2 w-full h-full object-cover"
+                          style={{ objectPosition: '50% 100%' }}
+                          src={
+                            installationsVideo === 'before'
+                              ? service.beforeVideoUrl
+                              : service.afterVideoUrl
+                          }
+                          autoPlay
+                          muted
+                          playsInline
+                          onTimeUpdate={(event) => {
+                            if (installationsVideo !== 'before') {
+                              return;
+                            }
+                            const video = event.currentTarget;
+                            if (video.currentTime >= 3.5) {
+                              setInstallationsVideo('after');
+                            }
+                          }}
+                          onEnded={() => {
+                            setInstallationsVideo(prev => (prev === 'before' ? 'after' : 'before'));
+                          }}
+                        />
+                        <div className="absolute bottom-4 left-4 flex gap-2 text-xs uppercase tracking-widest">
+                          <button
+                            type="button"
+                            onClick={() => setInstallationsVideo('before')}
+                            className={`rounded-full px-3 py-1 ${
+                              installationsVideo === 'before'
+                                ? 'bg-black/70 text-white'
+                                : 'bg-black/40 text-white/70 hover:bg-black/60'
+                            }`}
+                          >
+                            Before
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setInstallationsVideo('after')}
+                            className={`rounded-full px-3 py-1 ${
+                              installationsVideo === 'after'
+                                ? 'bg-black/70 text-white'
+                                : 'bg-black/40 text-white/70 hover:bg-black/60'
+                            }`}
+                          >
+                            After
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
                     {/* Decorative pattern */}
                     <div className="absolute inset-0 opacity-20">
                       <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
@@ -188,6 +245,8 @@ export default function ServicesPage() {
                         </svg>
                       </div>
                     </div>
+                      </>
+                    )}
                   </div>
                   {/* Decorative element */}
                   <div
