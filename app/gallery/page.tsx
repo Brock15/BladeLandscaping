@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Weed Barrier', 'Sodding', 'Before & After'];
+const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Weed Barrier', 'Sodding', 'Moving', 'Before & After'];
 
 const gradients = [
   'from-emerald-500 to-green-700',
@@ -15,13 +15,6 @@ const gradients = [
 
 const galleryItems = [
   {
-    id: 1,
-    title: 'Modern Front Yard Design',
-    category: 'Planting',
-    gradient: gradients[0],
-    videoUrl: '/media/gallery/videos/IMG_1526.mp4',
-  },
-  {
     id: 2,
     title: 'Fresh Mulch Installation',
     category: 'Mulching',
@@ -29,28 +22,31 @@ const galleryItems = [
     videoUrl: '/media/homepage/videos/IMG_2526.mp4',
   },
   {
+    id: 7,
+    title: 'Backyard Rock Installation',
+    category: 'Hardscape',
+    gradient: gradients[0],
+    imageUrl: '/reviews/fed-bread-2.png',
+  },
+  {
     id: 4,
     title: 'Stone Pathway Installation',
     category: 'Hardscape',
     gradient: gradients[3],
+    imageUrl: '/reviews/fed-bread-3.png',
+  },
+  {
+    id: 14,
+    title: 'Sod Installation',
+    category: 'Sodding',
+    gradient: gradients[4],
+    videoUrl: '/media/homepage/videos/sodding.mp4',
   },
   {
     id: 5,
     title: 'Backyard Transformation',
     category: 'Before & After',
     gradient: gradients[4],
-  },
-  {
-    id: 6,
-    title: 'Flower Bed Installation',
-    category: 'Planting',
-    gradient: gradients[5],
-  },
-  {
-    id: 7,
-    title: 'Commercial Property Care',
-    category: 'Lawn Care',
-    gradient: gradients[0],
   },
   {
     id: 8,
@@ -61,9 +57,16 @@ const galleryItems = [
   },
   {
     id: 9,
-    title: 'Patio Design & Installation',
-    category: 'Hardscape',
+    title: 'Lawn Soil Installation',
+    category: 'Lawn Care',
     gradient: gradients[2],
+    videoUrl: '/media/homepage/videos/soilfront2.mp4',
+  },
+  {
+    id: 6,
+    title: 'Flower Bed Installation',
+    category: 'Planting',
+    gradient: gradients[5],
   },
   {
     id: 10,
@@ -85,11 +88,10 @@ const galleryItems = [
     imageUrl: '/media/gallery/photos/image.png',
   },
   {
-    id: 14,
-    title: 'Sod Installation',
-    category: 'Sodding',
-    gradient: gradients[4],
-    videoUrl: '/media/homepage/videos/sodding.mp4',
+    id: 1,
+    title: 'Moving Assistance',
+    category: 'Moving',
+    gradient: gradients[0],
   },
 ];
 
@@ -137,12 +139,19 @@ const getCategoryIcon = (category: string) => {
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [isVisible, setIsVisible] = useState(false);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [hoveredVideoIndex, setHoveredVideoIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
 
   const filteredItems =
     activeCategory === 'All'
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeCategory);
+
+  const videoItemIndexes = filteredItems
+    .map((item, index) => (item.videoUrl ? index : null))
+    .filter((index): index is number => index !== null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -160,6 +169,37 @@ export default function GalleryPage() {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (videoItemIndexes.length === 0) {
+      return;
+    }
+
+    setActiveVideoIndex(0);
+    const interval = setInterval(() => {
+      setActiveVideoIndex((prev) => (prev + 1) % videoItemIndexes.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [activeCategory, videoItemIndexes.length]);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) {
+        return;
+      }
+      const isActive =
+        hoveredVideoIndex === index ||
+        (hoveredVideoIndex === null &&
+          videoItemIndexes[activeVideoIndex] === index);
+
+      if (isActive) {
+        void video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }, [activeVideoIndex, hoveredVideoIndex, videoItemIndexes]);
 
   return (
     <>
@@ -211,13 +251,25 @@ export default function GalleryPage() {
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 50}ms` }}
+                onMouseEnter={() => {
+                  if (item.videoUrl) {
+                    setHoveredVideoIndex(index);
+                  }
+                }}
+                onMouseLeave={() => {
+                  if (item.videoUrl) {
+                    setHoveredVideoIndex(null);
+                  }
+                }}
               >
                 {/* Background */}
                 {item.videoUrl ? (
                   <video
+                    ref={(node) => {
+                      videoRefs.current[index] = node;
+                    }}
                     className="absolute inset-0 w-full h-full object-cover"
                     src={item.videoUrl}
-                    autoPlay
                     muted
                     loop
                     playsInline
@@ -227,6 +279,7 @@ export default function GalleryPage() {
                         video.currentTime = 0;
                       }
                     }}
+                    preload="metadata"
                   />
                 ) : item.imageUrl ? (
                   <img

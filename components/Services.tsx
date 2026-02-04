@@ -15,6 +15,7 @@ const services = [
     ),
     gradient: 'from-amber-600 to-orange-800',
     videoUrl: '/media/homepage/videos/IMG_2526.mp4',
+    posterUrl: '/media/gallery/photos/mulcharcher.png',
     loopStart: 0,
     loopEnd: 5,
   },
@@ -29,6 +30,7 @@ const services = [
     ),
     gradient: 'from-slate-600 to-slate-800',
     videoUrl: '/media/homepage/videos/commercial-jobs.mp4',
+    posterUrl: '/media/gallery/photos/image.png',
     loopStart: 5,
     loopEnd: 12,
   },
@@ -43,6 +45,7 @@ const services = [
     ),
     gradient: 'from-stone-600 to-stone-800',
     videoUrl: '/media/homepage/videos/IMG_3923.mp4',
+    posterUrl: '/media/gallery/photos/mulchbackyard.jpg',
     loopStart: 2,
     loopEnd: 7,
   },
@@ -57,6 +60,7 @@ const services = [
     ),
     gradient: 'from-green-600 to-teal-700',
     videoUrl: '/media/homepage/videos/sodding.mp4',
+    posterUrl: '/media/gallery/photos/mulchbackyard.jpg',
     loopStart: 0,
     loopEnd: 5,
   },
@@ -118,10 +122,12 @@ export default function Services() {
                       service.id === 'removal' ? 'object-top' : ''
                     }`}
                     src={service.videoUrl}
+                    poster={service.posterUrl}
                     autoPlay
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                     onLoadedMetadata={(event) => {
                       const video = event.currentTarget;
                       const startTime = service.loopStart ?? 0;

@@ -19,6 +19,7 @@ const services = [
       'Annual refresh programs available',
     ],
     gradient: 'from-amber-600 to-orange-800',
+    videoUrl: '/media/homepage/videos/IMG_2526.mp4',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
@@ -53,9 +54,11 @@ const services = [
     title: 'Removal Services',
     subtitle: 'Clean Up & Hauling',
     description:
-      'Safe and efficient removal of trees, shrubs, debris, and unwanted vegetation. We handle everything from small cleanups to large-scale lot clearing projects.',
+      'Safe and efficient removal of rocks, bushes, debris, and unwanted vegetation. We also handle heavy construction removal with jackhammers when needed.',
     features: [
-      'Tree and shrub removal',
+      'Tree, bush, and shrub removal',
+      'Rock and concrete removal',
+      'Heavy construction removal with jackhammers',
       'Stump grinding',
       'Debris hauling and disposal',
       'Overgrown lot clearing',
@@ -63,6 +66,7 @@ const services = [
       'Construction site clearing',
     ],
     gradient: 'from-stone-600 to-stone-800',
+    imageUrl: '/media/gallery/photos/garbage-vertical.png',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -224,6 +228,23 @@ export default function ServicesPage() {
                           </button>
                         </div>
                       </div>
+                    ) : service.videoUrl ? (
+                      <video
+                        className="absolute inset-0 w-full h-full object-cover"
+                        src={service.videoUrl}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                      />
+                    ) : service.imageUrl ? (
+                      <img
+                        src={service.imageUrl}
+                        alt={service.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                      />
                     ) : (
                       <>
                     {/* Decorative pattern */}

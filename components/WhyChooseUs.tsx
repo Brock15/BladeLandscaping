@@ -192,6 +192,18 @@ export default function WhyChooseUs() {
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-[var(--blade-lime)]/20 rounded-full blur-2xl" />
               <div className="absolute -bottom-4 right-8 w-32 h-32 bg-[var(--blade-green)]/10 rounded-full blur-2xl" />
             </div>
+
+            {/* Owner Callout */}
+            <div className="mt-10 flex items-center gap-4 rounded-2xl bg-white/90 shadow-lg px-5 py-4">
+              <div className="w-24 h-16 bg-[var(--blade-off-white)] rounded-xl border border-[var(--blade-green)]/20" />
+              <div>
+                <div className="text-sm font-semibold text-[var(--blade-charcoal)]">Meet the Owner</div>
+                <p className="text-xs text-[var(--blade-gray)]">
+                  I&apos;m Brock Rose. I started Blade Landscaping in my junior year of high school.
+                  We&apos;ve kept it going to help local high school students earn and save for college.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
