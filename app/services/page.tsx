@@ -41,8 +41,8 @@ const services = [
       'Cleanup and haul-away',
     ],
     gradient: 'from-slate-600 to-slate-800',
-    beforeVideoUrl: '/media/gallery/videos/before.mp4',
-    afterVideoUrl: '/media/gallery/videos/after.mp4',
+    beforeVideoUrl: '/media/homepage/videos/before%20(online-video-cutter.com)%20copy.mp4',
+    afterVideoUrl: '/media/homepage/videos/after%20(online-video-cutter.com)%20copy.mp4',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
