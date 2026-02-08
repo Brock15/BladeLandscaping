@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Weed Barrier', 'Sodding', 'Moving', 'Before & After'];
+const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Weed Barrier', 'Sodding', 'Moving', 'Removal', 'Before & After'];
 
 const gradients = [
   'from-emerald-500 to-green-700',
@@ -44,9 +44,10 @@ const galleryItems = [
   },
   {
     id: 5,
-    title: 'Backyard Transformation',
+    title: 'Overgrown Yard Clean Up',
     category: 'Before & After',
     gradient: gradients[4],
+    videoUrl: '/media/homepage/photos/overgrown.mp4',
   },
   {
     id: 8,
@@ -64,21 +65,24 @@ const galleryItems = [
   },
   {
     id: 6,
-    title: 'Flower Bed Installation',
-    category: 'Planting',
+    title: 'Junk Removal',
+    category: 'Removal',
     gradient: gradients[5],
+    videoUrl: '/media/homepage/videos/IMG_3923.mp4',
   },
   {
     id: 10,
-    title: 'Overgrown Yard Cleanup',
+    title: 'Commercial Installation',
     category: 'Before & After',
     gradient: gradients[3],
+    videoUrl: '/media/homepage/videos/commercial-jobs.mp4',
   },
   {
     id: 11,
     title: 'Native Plant Garden',
     category: 'Planting',
     gradient: gradients[4],
+    imageUrl: '/media/homepage/photos/plants%20copy.jpg',
   },
   {
     id: 13,
@@ -92,6 +96,7 @@ const galleryItems = [
     title: 'Moving Assistance',
     category: 'Moving',
     gradient: gradients[0],
+    imageUrl: '/media/homepage/photos/image%20copy%202.png',
   },
 ];
 
@@ -194,9 +199,16 @@ export default function GalleryPage() {
           videoItemIndexes[activeVideoIndex] === index);
 
       if (isActive) {
-        void video.play();
+        if (video.paused) {
+          const playPromise = video.play();
+          if (playPromise) {
+            playPromise.catch(() => {});
+          }
+        }
       } else {
-        video.pause();
+        if (!video.paused) {
+          video.pause();
+        }
       }
     });
   }, [activeVideoIndex, hoveredVideoIndex, videoItemIndexes]);
@@ -304,9 +316,23 @@ export default function GalleryPage() {
                   </div>
                 )}
 
-                {/* Center Icon */}
-                <div className="absolute inset-0 flex items-center justify-center text-white/50 group-hover:text-white/80 group-hover:scale-110 transition-all duration-300">
-                  {getCategoryIcon(item.category)}
+                {/* Center Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center text-white/60 group-hover:text-white/90 group-hover:scale-110 transition-all duration-300">
+                  {item.videoUrl ? (
+                    <div className="w-14 h-14 rounded-full bg-black/40 flex items-center justify-center">
+                      <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  ) : item.imageUrl ? (
+                    <div className="w-14 h-14 rounded-full bg-black/35 flex items-center justify-center">
+                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                  ) : (
+                    getCategoryIcon(item.category)
+                  )}
                 </div>
 
                 {/* Overlay on hover */}

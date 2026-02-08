@@ -101,26 +101,13 @@ export default function AboutPage() {
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
               }`}
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[var(--blade-green-dark)] via-[var(--blade-green)] to-[var(--blade-green-light)]">
-                {/* Decorative pattern */}
-                <div className="absolute inset-0 opacity-20">
-                  <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <defs>
-                      <pattern id="about-story-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
-                        <circle cx="5" cy="5" r="1" fill="white"/>
-                      </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#about-story-pattern)"/>
-                  </svg>
-                </div>
-                {/* Center icon */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white">
-                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                    </svg>
-                  </div>
-                </div>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <img
+                  src="/media/homepage/photos/image%20copy.png"
+                  alt="Our story"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-[var(--blade-green)]/10 rounded-full blur-3xl" />
             </div>
@@ -236,26 +223,13 @@ export default function AboutPage() {
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="relative h-64 md:h-80 bg-gradient-to-br from-[var(--blade-green-dark)] via-[var(--blade-green)] to-[var(--blade-green-light)]">
-                {/* Decorative pattern */}
-                <div className="absolute inset-0 opacity-20">
-                  <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <defs>
-                      <pattern id="team-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
-                        <circle cx="5" cy="5" r="1" fill="white"/>
-                      </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#team-pattern)"/>
-                  </svg>
-                </div>
-                {/* Team icon */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white">
-                    <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  </div>
-                </div>
+              <div className="relative h-80 md:h-96">
+                <img
+                  src="/media/homepage/photos/image%20copy%204.png"
+                  alt="Blade Landscaping crew"
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
               <div className="p-8 text-center">
                 <h3 className="text-2xl font-bold text-[var(--blade-charcoal)] mb-2">

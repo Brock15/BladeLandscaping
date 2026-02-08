@@ -203,8 +203,8 @@ export default function Testimonials() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 w-full max-w-3xl">
             {[
               { name: 'Ferguson Plastic Surgery', sub: 'Plastic Surgery' },
-              { name: "Women's Health", sub: 'Wellness Clinic' },
-              { name: 'Makeup Studio', sub: 'Beauty & Makeup' },
+              { name: 'Enhancement of Life Center', sub: 'Wellness Clinic' },
+              { name: 'Alamo City Med Spa', sub: 'Med Spa' },
             ].map((biz) => (
               <div
                 key={biz.name}

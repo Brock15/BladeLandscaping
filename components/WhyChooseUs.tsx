@@ -195,7 +195,12 @@ export default function WhyChooseUs() {
 
             {/* Owner Callout */}
             <div className="mt-10 flex items-center gap-4 rounded-2xl bg-white/90 shadow-lg px-5 py-4">
-              <div className="w-24 h-16 bg-[var(--blade-off-white)] rounded-xl border border-[var(--blade-green)]/20" />
+              <img
+                src="/media/homepage/photos/image.png"
+                alt="Meet the owner"
+                className="w-24 h-16 object-cover rounded-xl border border-[var(--blade-green)]/20"
+                loading="lazy"
+              />
               <div>
                 <div className="text-sm font-semibold text-[var(--blade-charcoal)]">Meet the Owner</div>
                 <p className="text-xs text-[var(--blade-gray)]">

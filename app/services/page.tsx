@@ -31,10 +31,10 @@ const services = [
     title: 'Installations',
     subtitle: 'Professional Install Services',
     description:
-      'Professional installation of pavers, stones, landscape fabric, borders, and more. We ensure clean lines, long-lasting durability, and a polished finish.',
+      'Professional installation of pavers, stones, soil, landscape fabric, borders, and more. We ensure clean lines, long-lasting durability, and a polished finish.',
     features: [
       'Landscape fabric and weed barrier installs',
-      'Stone, rock, and gravel placement',
+      'Soil, stone, rock, and gravel placement',
       'Paver and edging installs',
       'Garden bed borders and separators',
       'Site prep and leveling',
@@ -88,6 +88,7 @@ const services = [
       'Phased implementation options',
     ],
     gradient: 'from-cyan-600 to-blue-800',
+    imageUrl: '/media/homepage/photos/plants%20copy.jpg',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -109,6 +110,7 @@ const services = [
       'Cleanup after the move',
     ],
     gradient: 'from-lime-600 to-green-800',
+    imageUrl: '/media/homepage/photos/image%20copy%202.png',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h8m4 4H4m12 4H8m8-8v10a2 2 0 01-2 2H10a2 2 0 01-2-2V7m8 0l-1.5-3h-5L8 7" />
@@ -150,7 +152,7 @@ export default function ServicesPage() {
               What We Offer
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Our Services
+              Our Main Services
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
               Comprehensive landscaping solutions tailored to your needs. From routine maintenance

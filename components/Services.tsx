@@ -45,7 +45,6 @@ const services = [
     ),
     gradient: 'from-stone-600 to-stone-800',
     videoUrl: '/media/homepage/videos/IMG_3923.mp4',
-    posterUrl: '/media/gallery/photos/mulchbackyard.jpg',
     loopStart: 2,
     loopEnd: 7,
   },
@@ -60,15 +59,21 @@ const services = [
     ),
     gradient: 'from-green-600 to-teal-700',
     videoUrl: '/media/homepage/videos/sodding.mp4',
-    posterUrl: '/media/gallery/photos/mulchbackyard.jpg',
-    loopStart: 0,
+    loopStart: 2.5,
     loopEnd: 5,
   },
 ];
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const [hoveredVideoIndex, setHoveredVideoIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
+
+  const videoServiceIndexes = services
+    .map((service, index) => (service.videoUrl ? index : null))
+    .filter((index): index is number => index !== null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -86,6 +91,48 @@ export default function Services() {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (videoServiceIndexes.length === 0) {
+      return;
+    }
+
+    setActiveVideoIndex(0);
+    const interval = setInterval(() => {
+      setActiveVideoIndex((prev) => (prev + 1) % videoServiceIndexes.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [videoServiceIndexes.length]);
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) {
+        return;
+      }
+      const isActive =
+        hoveredVideoIndex === index ||
+        (hoveredVideoIndex === null &&
+          videoServiceIndexes[activeVideoIndex] === index);
+
+      if (isActive) {
+        const startTime = services[index]?.loopStart ?? 0;
+        if (Number.isFinite(startTime)) {
+          video.currentTime = startTime;
+        }
+        if (video.paused) {
+          const playPromise = video.play();
+          if (playPromise) {
+            playPromise.catch(() => {});
+          }
+        }
+      } else {
+        if (!video.paused) {
+          video.pause();
+        }
+      }
+    });
+  }, [activeVideoIndex, hoveredVideoIndex, videoServiceIndexes]);
 
   return (
     <section ref={sectionRef} id="services" className="section-padding bg-[var(--blade-off-white)]">
@@ -113,6 +160,16 @@ export default function Services() {
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
+              onMouseEnter={() => {
+                if (service.videoUrl) {
+                  setHoveredVideoIndex(index);
+                }
+              }}
+              onMouseLeave={() => {
+                if (service.videoUrl) {
+                  setHoveredVideoIndex(null);
+                }
+              }}
             >
               {/* Gradient Background */}
               <div className="relative h-64 overflow-hidden">
@@ -121,9 +178,10 @@ export default function Services() {
                     className={`absolute inset-0 w-full h-full object-cover ${
                       service.id === 'removal' ? 'object-top' : ''
                     }`}
+                    ref={(node) => {
+                      videoRefs.current[index] = node;
+                    }}
                     src={service.videoUrl}
-                    poster={service.posterUrl}
-                    autoPlay
                     muted
                     loop
                     playsInline
@@ -163,14 +221,18 @@ export default function Services() {
                     </div>
                   </div>
                 )}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">
-                    {service.icon}
-                  </div>
-                </div>
-                <div className="absolute bottom-4 left-4 w-14 h-14 bg-white rounded-xl flex items-center justify-center text-[var(--blade-green)] shadow-lg">
-                  {service.icon}
-                </div>
+                {!service.videoUrl && (
+                  <>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-white transform group-hover:scale-110 transition-transform duration-300">
+                        {service.icon}
+                      </div>
+                    </div>
+                    <div className="absolute bottom-4 left-4 w-14 h-14 bg-white rounded-xl flex items-center justify-center text-[var(--blade-green)] shadow-lg">
+                      {service.icon}
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Content */}

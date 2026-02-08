@@ -10,6 +10,8 @@ interface FormData {
   message: string;
 }
 
+const FORM_ENDPOINT = 'https://formspree.io/f/xkovgggz';
+
 export default function ContactForm() {
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -32,15 +34,20 @@ export default function ContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
 
-    // Reset form after showing success
-    setTimeout(() => {
-      setIsSubmitted(false);
+      setIsSubmitted(true);
       setFormData({
         name: '',
         email: '',
@@ -48,7 +55,12 @@ export default function ContactForm() {
         service: '',
         message: '',
       });
-    }, 3000);
+    } catch (error) {
+      setIsSubmitted(false);
+      alert('Something went wrong. Please try again or call/text us.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
