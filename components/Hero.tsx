@@ -41,7 +41,7 @@ export default function Hero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8 mt-28">
             <span className="w-2 h-2 bg-[var(--blade-green-light)] rounded-full animate-pulse" />
-            <span className="text-sm font-medium">Student-Owned & Operated in San Antonio</span>
+            <span className="text-sm font-medium">Student-Owned & Operated in College Station</span>
           </div>
 
           {/* Main Heading */}
