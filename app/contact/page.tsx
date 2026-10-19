@@ -95,7 +95,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-[var(--blade-charcoal)] mb-1">Service Area</h3>
                     <p className="text-[var(--blade-green)] font-semibold text-lg">
-                      San Antonio, TX
+                      College Station, TX
                     </p>
                     <p className="text-sm text-[var(--blade-gray)] mt-1">
                       And surrounding areas
@@ -169,10 +169,10 @@ export default function ContactPage() {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-[var(--blade-charcoal)] mb-2">
-              Serving San Antonio & Surrounding Areas
+              Serving College Station & Surrounding Areas
             </h3>
             <p className="text-[var(--blade-gray)] max-w-md mx-auto">
-              We provide landscaping services throughout the greater San Antonio metropolitan area including Stone Oak, Alamo Heights, The Dominion, and more.
+              We provide landscaping services throughout College Station and the surrounding areas.
             </p>
           </div>
         </div>

@@ -84,8 +84,8 @@ export default function AboutPage() {
               Our Story
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
-              We&apos;re a team of hardworking college and high school students bringing fresh energy
-              and dedication to landscaping in San Antonio.
+              We&apos;re a team of hardworking college students bringing fresh energy
+              and dedication to landscaping in College Station.
             </p>
           </div>
         </div>
@@ -101,10 +101,10 @@ export default function AboutPage() {
                 isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
               }`}
             >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative aspect-[1371/1147] rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/media/homepage/photos/image%20copy.png"
-                  alt="Our story"
+                  src="/media/students/blade-team.png"
+                  alt="Blade Landscaping student crew with tools at a mulching job"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -127,8 +127,8 @@ export default function AboutPage() {
               <div className="space-y-4 text-[var(--blade-gray)] text-lg leading-relaxed">
                 <p>
                   Blade Landscaping is proudly owned and operated by local students. We&apos;re college
-                  and high school students who started this business to earn money, build real-world
-                  skills, and serve our San Antonio community.
+                  students who started this business to earn money, build real-world
+                  skills, and serve our College Station community.
                 </p>
                 <p>
                   What sets us apart? <strong>Every quote is given in person.</strong> We believe in
@@ -216,16 +216,16 @@ export default function AboutPage() {
               Meet the Students
             </h2>
             <p className="text-[var(--blade-gray)] text-lg leading-relaxed">
-              We&apos;re a crew of motivated college and high school students who love working outdoors
+              We&apos;re a crew of motivated college students who love working outdoors
               and take pride in making your property look amazing.
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
-              <div className="relative h-80 md:h-96">
+              <div className="relative aspect-[1371/1147]">
                 <img
-                  src="/media/homepage/photos/image%20copy%204.png"
+                  src="/media/students/blade-team.png"
                   alt="Blade Landscaping crew"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
@@ -237,8 +237,8 @@ export default function AboutPage() {
                 </h3>
                 <p className="text-[var(--blade-green)] font-semibold mb-4">Local Student Workers</p>
                 <p className="text-[var(--blade-gray)]">
-                  College and high school students working hard to earn money and build skills while making
-                  San Antonio yards look their best. Support local students!
+                  College students working hard to earn money and build skills while making
+                  College Station yards look their best. Support local students!
                 </p>
               </div>
             </div>

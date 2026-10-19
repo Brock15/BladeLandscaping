@@ -14,16 +14,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Blade Landscaping | Professional Landscaping Services in San Antonio, TX",
-  description: "Transform your outdoor space with Blade Landscaping. Professional lawn care, mulching, planting, weeding, and removal services in San Antonio, TX. Call (210) 802-5469 for a free quote.",
-  keywords: "landscaping, lawn care, mulching, planting, weeding, San Antonio, TX, landscaping services",
+  title: "Blade Landscaping | Professional Landscaping Services in College Station, TX",
+  description: "Transform your outdoor space with Blade Landscaping. Professional lawn care, mulching, planting, weeding, and removal services in College Station, TX. Call (210) 802-5469 for a free quote.",
+  keywords: "landscaping, lawn care, mulching, planting, weeding, College Station, TX, landscaping services",
   icons: {
     icon: "/BladeAndLeafDark.png",
     shortcut: "/BladeAndLeafDark.png",
     apple: "/BladeAndLeafDark.png",
   },
   openGraph: {
-    title: "Blade Landscaping | San Antonio's Trusted Landscaping Partner",
+    title: "Blade Landscaping | College Station's Trusted Landscaping Partner",
     description: "Professional landscaping services including lawn care, mulching, planting, and more. Transform your outdoor space today!",
     type: "website",
     locale: "en_US",

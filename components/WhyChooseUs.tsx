@@ -12,7 +12,7 @@ const features = [
       </svg>
     ),
     title: 'Student-Owned',
-    description: 'Run by hardworking college and high school students from San Antonio.',
+    description: 'Run by hardworking college students from College Station.',
   },
   {
     icon: (
@@ -100,7 +100,7 @@ export default function WhyChooseUs() {
               Professional Results
             </h2>
             <p className="text-[var(--blade-gray)] text-lg leading-relaxed mb-8">
-              Blade Landscaping is proudly owned and operated by local college and high school students.
+              Blade Landscaping is proudly owned and operated by local college students.
               We bring fresh energy, hard work, and a commitment to quality. Every quote is given in person
               because we believe in building real relationships with our customers.
             </p>

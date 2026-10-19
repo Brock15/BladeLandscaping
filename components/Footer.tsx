@@ -38,7 +38,7 @@ export default function Footer() {
               <span className="text-xl font-bold">Blade Landscaping</span>
             </Link>
             <p className="text-[var(--blade-silver)] mb-6 leading-relaxed">
-              Professional landscaping services in San Antonio, TX. We transform outdoor spaces
+              Professional landscaping services in College Station, TX. We transform outdoor spaces
               into beautiful, functional landscapes that you&apos;ll love.
             </p>
             <div className="text-xs uppercase tracking-[0.2em] text-white/50 mb-3">
@@ -128,7 +128,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-[var(--blade-silver)]">San Antonio, TX</span>
+                <span className="text-[var(--blade-silver)]">College Station, TX</span>
               </div>
               <div className="flex items-start gap-3">
                 <svg
