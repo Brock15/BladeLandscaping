@@ -103,7 +103,7 @@ export default function AboutPage() {
             >
               <div className="relative aspect-[1371/1147] rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="/media/students/blade-team.png"
+                  src="/media/students/blade-crew-at-work.png"
                   alt="Blade Landscaping student crew with tools at a mulching job"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
@@ -225,7 +225,7 @@ export default function AboutPage() {
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
               <div className="relative aspect-[1371/1147]">
                 <img
-                  src="/media/students/blade-team.png"
+                  src="/media/students/blade-crew-at-work.png"
                   alt="Blade Landscaping crew"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
