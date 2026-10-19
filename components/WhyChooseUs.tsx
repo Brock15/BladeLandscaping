@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 const features = [
   {
@@ -193,21 +194,36 @@ export default function WhyChooseUs() {
               <div className="absolute -bottom-4 right-8 w-32 h-32 bg-[var(--blade-green)]/10 rounded-full blur-2xl" />
             </div>
 
-            {/* Owner Callout */}
-            <div className="mt-10 flex items-center gap-4 rounded-2xl bg-white/90 shadow-lg px-5 py-4">
-              <img
-                src="/media/homepage/photos/image.png"
-                alt="Meet the owner"
-                className="w-24 h-16 object-cover rounded-xl border border-[var(--blade-green)]/20"
-                loading="lazy"
-              />
-              <div>
-                <div className="text-sm font-semibold text-[var(--blade-charcoal)]">Meet the Owner</div>
-                <p className="text-xs text-[var(--blade-gray)]">
-                  I&apos;m Brock Rose. I started Blade Landscaping in my junior year of high school.
-                  We&apos;ve kept it going to help local high school students earn and save for college.
-                </p>
+            {/* Owners Callout */}
+            <div className="mt-10 rounded-2xl bg-white/90 shadow-lg p-5 sm:p-6 text-center">
+              <h3 className="text-2xl font-bold text-[var(--blade-charcoal)] mb-5">Meet the Owners</h3>
+              <div className="grid grid-cols-2 gap-4 mx-auto mb-5 max-w-[256px]">
+                <Image
+                  src="/media/homepage/photos/owner-black-polo.png"
+                  alt="Blade Landscaping co-owner wearing a black polo"
+                  width={1086}
+                  height={1448}
+                  sizes="120px"
+                  className="w-full aspect-[3/4] object-cover object-top rounded-xl border border-[var(--blade-green)]/20"
+                />
+                <Image
+                  src="/media/homepage/photos/owner-suit.jpeg"
+                  alt="Blade Landscaping co-owner wearing a suit and tie"
+                  width={1100}
+                  height={1430}
+                  sizes="120px"
+                  className="w-full aspect-[3/4] object-cover object-top rounded-xl border border-[var(--blade-green)]/20"
+                />
               </div>
+              <p className="mx-auto max-w-prose text-sm text-[var(--blade-gray)] leading-relaxed text-pretty">
+                We&apos;re both Construction Science majors at Texas A&amp;M University, building
+                our futures through hard work in the classroom and in your neighborhood. Alongside
+                our studies, we run Blade Landscaping with a crew of fellow college students,
+                helping each other earn our way through school. We bring pride, care, and attention
+                to detail to every property we serve. When you choose Blade, you&apos;re investing
+                in your outdoor space and helping hardworking students pay for college, gain
+                hands-on experience, and build a strong foundation for what comes next.
+              </p>
             </div>
           </div>
         </div>
