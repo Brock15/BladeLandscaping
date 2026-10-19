@@ -198,22 +198,32 @@ export default function WhyChooseUs() {
             <div className="mt-10 rounded-2xl bg-white/90 shadow-lg p-5 sm:p-6 text-center">
               <h3 className="text-2xl font-bold text-[var(--blade-charcoal)] mb-5">Meet the Owners</h3>
               <div className="grid grid-cols-2 gap-4 mx-auto mb-5 max-w-[256px]">
-                <Image
-                  src="/media/homepage/photos/owner-black-polo.png"
-                  alt="Blade Landscaping co-owner wearing a black polo"
-                  width={1086}
-                  height={1448}
-                  sizes="120px"
-                  className="w-full aspect-[3/4] object-cover object-top rounded-xl border border-[var(--blade-green)]/20"
-                />
-                <Image
-                  src="/media/homepage/photos/owner-suit.jpeg"
-                  alt="Blade Landscaping co-owner wearing a suit and tie"
-                  width={1100}
-                  height={1430}
-                  sizes="120px"
-                  className="w-full aspect-[3/4] object-cover object-top rounded-xl border border-[var(--blade-green)]/20"
-                />
+                <figure>
+                  <Image
+                    src="/media/homepage/photos/owner-black-polo.png"
+                    alt="Brock Rose, Blade Landscaping co-owner"
+                    width={1086}
+                    height={1448}
+                    sizes="120px"
+                    className="w-full aspect-[3/4] object-cover object-top rounded-xl border border-[var(--blade-green)]/20"
+                  />
+
+                  <figcaption className="mt-2 text-sm font-semibold text-[var(--blade-charcoal)]">Brock Rose</figcaption>
+                </figure>
+                <figure>
+                  <div className="aspect-[3/4] overflow-hidden rounded-xl border border-[var(--blade-green)]/20">
+                  <Image
+                    src="/media/homepage/photos/owner-suit.jpeg"
+                    alt="Jackson Phillips, Blade Landscaping co-owner"
+                    width={1100}
+                    height={1430}
+                    sizes="156px"
+                    className="w-full h-full object-cover object-top scale-[1.3] origin-[50%_20%]"
+                  />
+                  </div>
+
+                  <figcaption className="mt-2 text-sm font-semibold text-[var(--blade-charcoal)]">Jackson Phillips</figcaption>
+                </figure>
               </div>
               <p className="mx-auto max-w-prose text-sm text-[var(--blade-gray)] leading-relaxed text-pretty">
                 We&apos;re both Construction Science majors at Texas A&amp;M University, building
