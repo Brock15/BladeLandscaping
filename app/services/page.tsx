@@ -110,7 +110,7 @@ const services = [
       'Cleanup after the move',
     ],
     gradient: 'from-lime-600 to-green-800',
-    imageUrl: '/media/homepage/photos/image%20copy%202.png',
+    imageUrl: '/media/gallery/photos/blade-crew-moving.png',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h8m4 4H4m12 4H8m8-8v10a2 2 0 01-2 2H10a2 2 0 01-2-2V7m8 0l-1.5-3h-5L8 7" />

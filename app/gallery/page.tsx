@@ -96,7 +96,7 @@ const galleryItems = [
     title: 'Moving Assistance',
     category: 'Moving',
     gradient: gradients[0],
-    imageUrl: '/media/homepage/photos/image%20copy%202.png',
+    imageUrl: '/media/gallery/photos/blade-crew-moving.png',
   },
 ];
 
