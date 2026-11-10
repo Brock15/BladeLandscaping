@@ -5,7 +5,7 @@ export const business = {
   url: 'https://bladelandscaping.com',
   phone: '(210) 802-5469',
   phoneHref: 'tel:+12108025469',
-  email: 'info@bladelandscaping.com',
+  email: 'bladelandscapingtx@gmail.com',
   area: 'Bryan–College Station',
   instagram: 'https://www.instagram.com/blade_landscaping/',
   nextdoor: 'https://nextdoor.com/pages/blade_landscaping-san-antonio-tx/',

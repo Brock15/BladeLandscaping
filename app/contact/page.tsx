@@ -77,8 +77,8 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
                   </div>
                   <div>
                     <h3 className="font-semibold text-[var(--blade-charcoal)] mb-1">Email</h3>
-                    <a href="mailto:info@bladelandscaping.com" className="text-[var(--blade-green)] font-semibold text-lg hover:underline">
-                      info@bladelandscaping.com
+                    <a href="mailto:bladelandscapingtx@gmail.com" className="text-[var(--blade-green)] font-semibold text-lg hover:underline">
+                      bladelandscapingtx@gmail.com
                     </a>
                     <p className="text-sm text-[var(--blade-gray)] mt-1">
                       Share your project details or questions

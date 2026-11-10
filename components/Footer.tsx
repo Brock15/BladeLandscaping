@@ -166,10 +166,10 @@ export default function Footer() {
                   />
                 </svg>
                 <a
-                  href="mailto:info@bladelandscaping.com"
+                  href="mailto:bladelandscapingtx@gmail.com"
                   className="text-[var(--blade-silver)] hover:text-[var(--blade-green-light)] transition-colors"
                 >
-                  info@bladelandscaping.com
+                  bladelandscapingtx@gmail.com
                 </a>
               </div>
             </div>
