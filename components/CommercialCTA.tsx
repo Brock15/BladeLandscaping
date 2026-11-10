@@ -1,0 +1,5 @@
+import Link from 'next/link';
+
+export default function CommercialCTA() {
+  return <section className="section-padding bg-[var(--blade-off-white)]"><div className="container-custom"><div className="bg-white rounded-2xl shadow-lg border border-[var(--blade-green)]/10 p-8 md:p-12 lg:flex lg:items-center lg:justify-between gap-10"><div className="max-w-2xl"><span className="text-[var(--blade-green)] font-semibold text-sm uppercase tracking-wider">For Businesses & Managed Properties</span><h2 className="text-3xl md:text-4xl font-bold text-[var(--blade-charcoal)] mt-4 mb-5">A Better Landscape for Your Property</h2><p className="text-[var(--blade-gray)] text-lg leading-relaxed">Discuss landscape renovations, seasonal improvements, cleanup, and recurring care for apartments, HOAs, businesses, and managed properties.</p></div><Link href="/services/commercial-landscaping" className="btn-primary mt-7 lg:mt-0 shrink-0">Explore Commercial Services <span aria-hidden="true">→</span></Link></div></div></section>;
+}

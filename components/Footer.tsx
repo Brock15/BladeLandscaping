@@ -2,12 +2,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const services = [
-  'Moving',
-  'Mulching',
-  'Planting',
-  'Weeding',
-  'Removal Services',
-  'Landscape Design',
+  'Landscape Installation',
+  'Landscape Renovations',
+  'Rock & Stone Landscaping',
+  'Sod & Planting',
+  'Property Preparation',
+  'Commercial Landscaping',
 ];
 
 const quickLinks = [
@@ -38,11 +38,11 @@ export default function Footer() {
               <span className="text-xl font-bold">Blade Landscaping</span>
             </Link>
             <p className="text-[var(--blade-silver)] mb-6 leading-relaxed">
-              Professional landscaping services in College Station, TX. We transform outdoor spaces
-              into beautiful, functional landscapes that you&apos;ll love.
+              Landscape installation, renovation, and outdoor improvements for homes and
+              commercial properties in Bryan–College Station.
             </p>
             <div className="text-xs uppercase tracking-[0.2em] text-white/50 mb-3">
-              Follow us on Insta and Nextdoor!
+              Follow our latest projects
             </div>
             <div className="flex gap-4">
               <a
@@ -128,7 +128,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-[var(--blade-silver)]">College Station, TX</span>
+                <span className="text-[var(--blade-silver)]">Bryan–College Station, TX</span>
               </div>
               <div className="flex items-start gap-3">
                 <svg
@@ -186,16 +186,16 @@ export default function Footer() {
             </p>
             <div className="flex gap-6 text-sm">
               <Link
-                href="/privacy"
+                href="/gallery"
                 className="text-[var(--blade-silver)] hover:text-white transition-colors"
               >
-                Privacy Policy
+                Our Work
               </Link>
               <Link
-                href="/terms"
+                href="/contact"
                 className="text-[var(--blade-silver)] hover:text-white transition-colors"
               >
-                Terms of Service
+                Request an Estimate
               </Link>
             </div>
           </div>

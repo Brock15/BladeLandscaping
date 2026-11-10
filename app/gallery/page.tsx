@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
+import Image from 'next/image';
 
-const categories = ['All', 'Lawn Care', 'Mulching', 'Planting', 'Hardscape', 'Weed Barrier', 'Sodding', 'Moving', 'Removal', 'Before & After'];
+const categories = ['All', 'Hardscape', 'Commercial', 'Sodding', 'Planting', 'Mulching', 'Lawn Care', 'Weed Barrier', 'Removal'];
 
 const gradients = [
   'from-emerald-500 to-green-700',
@@ -30,7 +31,7 @@ const galleryItems = [
   },
   {
     id: 4,
-    title: 'Stone Pathway Installation',
+    title: 'Stone Pathway Detail',
     category: 'Hardscape',
     gradient: gradients[3],
     imageUrl: '/reviews/fed-bread-3.png',
@@ -44,8 +45,8 @@ const galleryItems = [
   },
   {
     id: 5,
-    title: 'Overgrown Yard Clean Up',
-    category: 'Before & After',
+    title: 'Landscape Surface Preparation',
+    category: 'Lawn Care',
     gradient: gradients[4],
     videoUrl: '/media/homepage/photos/overgrown.mp4',
   },
@@ -65,7 +66,7 @@ const galleryItems = [
   },
   {
     id: 6,
-    title: 'Junk Removal',
+    title: 'Landscape Material Removal',
     category: 'Removal',
     gradient: gradients[5],
     videoUrl: '/media/homepage/videos/IMG_3923.mp4',
@@ -73,13 +74,13 @@ const galleryItems = [
   {
     id: 10,
     title: 'Commercial Installation',
-    category: 'Before & After',
+    category: 'Commercial',
     gradient: gradients[3],
     videoUrl: '/media/homepage/videos/commercial-jobs.mp4',
   },
   {
     id: 11,
-    title: 'Native Plant Garden',
+    title: 'Planting & Garden Beds',
     category: 'Planting',
     gradient: gradients[4],
     imageUrl: '/media/homepage/photos/plants%20copy.jpg',
@@ -98,7 +99,7 @@ const galleryItems = [
     gradient: gradients[0],
     imageUrl: '/media/gallery/photos/blade-crew-moving.png',
   },
-];
+].filter((item) => item.category !== 'Moving');
 
 const getCategoryIcon = (category: string) => {
   switch (category) {
@@ -149,14 +150,14 @@ export default function GalleryPage() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<Array<HTMLVideoElement | null>>([]);
 
-  const filteredItems =
+  const filteredItems = useMemo(() =>
     activeCategory === 'All'
       ? galleryItems
-      : galleryItems.filter((item) => item.category === activeCategory);
+      : galleryItems.filter((item) => item.category === activeCategory), [activeCategory]);
 
-  const videoItemIndexes = filteredItems
+  const videoItemIndexes = useMemo(() => filteredItems
     .map((item, index) => (item.videoUrl ? index : null))
-    .filter((index): index is number => index !== null);
+    .filter((index): index is number => index !== null), [filteredItems]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -180,7 +181,6 @@ export default function GalleryPage() {
       return;
     }
 
-    setActiveVideoIndex(0);
     const interval = setInterval(() => {
       setActiveVideoIndex((prev) => (prev + 1) % videoItemIndexes.length);
     }, 6000);
@@ -242,7 +242,8 @@ export default function GalleryPage() {
             {categories.map((category) => (
               <button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => { setActiveCategory(category); setActiveVideoIndex(0); setHoveredVideoIndex(null); }}
+                aria-pressed={activeCategory === category}
                 className={`px-6 py-3 rounded-full font-medium transition-all ${
                   activeCategory === category
                     ? 'bg-[var(--blade-green)] text-white'
@@ -294,9 +295,11 @@ export default function GalleryPage() {
                     preload="metadata"
                   />
                 ) : item.imageUrl ? (
-                  <img
+                  <Image
                     src={item.imageUrl}
                     alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 25vw"
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
                   />

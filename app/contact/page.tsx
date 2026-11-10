@@ -1,6 +1,8 @@
 import { ContactForm } from '@/components';
 
-export default function ContactPage() {
+export default async function ContactPage({ searchParams }: { searchParams: Promise<{ project?: string; service?: string }> }) {
+  const parameters = await searchParams;
+  const commercial = parameters.project === 'commercial';
   return (
     <>
       {/* Hero Section */}
@@ -12,11 +14,11 @@ export default function ContactPage() {
               Get In Touch
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Contact Us
+              {commercial ? 'Request a Commercial Proposal' : 'Let’s Talk About Your Project'}
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
-              Ready to transform your outdoor space? We provide free in-person quotes—we&apos;ll
-              come to you, meet face-to-face, and give you an honest estimate.
+              Share your ideas, property details, and priorities. We&apos;ll discuss the scope
+              and the next step for an on-site consultation.
             </p>
           </div>
         </div>
@@ -29,13 +31,13 @@ export default function ContactPage() {
             {/* Contact Form */}
             <div>
               <h2 className="text-2xl md:text-3xl font-bold text-[var(--blade-charcoal)] mb-2">
-                Schedule Your Free In-Person Quote
+                Request a Project Estimate
               </h2>
               <p className="text-[var(--blade-gray)] mb-8">
                 Fill out the form below and we&apos;ll reach out to schedule a time to visit your property
                 and give you a professional, personalized estimate.
               </p>
-              <ContactForm />
+              <ContactForm commercial={commercial} initialService={parameters.service} />
             </div>
 
             {/* Contact Info */}
@@ -79,7 +81,7 @@ export default function ContactPage() {
                       info@bladelandscaping.com
                     </a>
                     <p className="text-sm text-[var(--blade-gray)] mt-1">
-                      We respond within 24 hours
+                      Share your project details or questions
                     </p>
                   </div>
                 </div>
@@ -95,7 +97,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-[var(--blade-charcoal)] mb-1">Service Area</h3>
                     <p className="text-[var(--blade-green)] font-semibold text-lg">
-                      College Station, TX
+                      Bryan & College Station, TX
                     </p>
                     <p className="text-sm text-[var(--blade-gray)] mt-1">
                       And surrounding areas
@@ -169,10 +171,10 @@ export default function ContactPage() {
               </svg>
             </div>
             <h3 className="text-xl font-bold text-[var(--blade-charcoal)] mb-2">
-              Serving College Station & Surrounding Areas
+              Serving Bryan–College Station & Surrounding Areas
             </h3>
             <p className="text-[var(--blade-gray)] max-w-md mx-auto">
-              We provide landscaping services throughout College Station and the surrounding areas.
+              We provide landscape installation, renovation, and property improvements throughout Bryan, College Station, and surrounding communities.
             </p>
           </div>
         </div>

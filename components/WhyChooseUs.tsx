@@ -1,18 +1,14 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 const features = [
   {
     icon: (
       <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 7l9-5-9-5-9 5 9 5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10l9-7 9 7M5 9v11h14V9M9 20v-7h6v7" />
       </svg>
     ),
-    title: 'Student-Owned',
-    description: 'Run by hardworking college students from College Station.',
+    title: 'Project Planning',
+    description: 'Work directly with Brock and Jackson to discuss your property and project.',
   },
   {
     icon: (
@@ -20,8 +16,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
       </svg>
     ),
-    title: 'In-Person Quotes',
-    description: 'We meet you at your property to give professional, personalized estimates.',
+    title: 'On-Site Consultations',
+    description: 'We walk your property with you to understand the space, scope, and priorities.',
   },
   {
     icon: (
@@ -29,8 +25,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
       </svg>
     ),
-    title: 'Personal Touch',
-    description: 'Small team means you get direct communication and real relationships.',
+    title: 'Clear Communication',
+    description: 'A direct point of contact for your questions, project details, and next steps.',
   },
   {
     icon: (
@@ -38,8 +34,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'Student-Friendly Prices',
-    description: 'Quality work at fair rates. We understand budgets because we live them too.',
+    title: 'Detailed Proposals',
+    description: 'Review the work included, material choices, and estimate before moving forward.',
   },
   {
     icon: (
@@ -47,8 +43,8 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'Flexible Scheduling',
-    description: 'We work around your schedule with evening and weekend availability.',
+    title: 'Organized Scheduling',
+    description: 'Plan the work around your project scope, property access, and material needs.',
   },
   {
     icon: (
@@ -56,186 +52,42 @@ const features = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'Reliable & Dedicated',
-    description: 'We show up on time and work hard. Your satisfaction is our reputation.',
+    title: 'Attention to Detail',
+    description: 'Thoughtful preparation, careful installation, and a clean finish for your property.',
   },
 ];
 
 export default function WhyChooseUs() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className="section-padding bg-white">
+    <section className="section-padding bg-white">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div
-            className={`transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}
-          >
-            <span className="inline-block text-[var(--blade-green)] font-semibold text-sm uppercase tracking-wider mb-4">
-              Why Choose Us
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--blade-charcoal)] mb-6">
-              <span className="text-[var(--blade-green)]">Student-Run</span> with
-              Professional Results
-            </h2>
-            <p className="text-[var(--blade-gray)] text-lg leading-relaxed mb-8">
-              Blade Landscaping is proudly owned and operated by local college students.
-              We bring fresh energy, hard work, and a commitment to quality. Every quote is given in person
-              because we believe in building real relationships with our customers.
-            </p>
-
-            {/* Features Grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className={`flex items-start gap-4 transition-all duration-500 ${
-                    isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                  }`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 bg-[var(--blade-green)]/10 rounded-xl flex items-center justify-center text-[var(--blade-green)]">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-[var(--blade-charcoal)] mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-[var(--blade-gray)]">{feature.description}</p>
-                  </div>
-                </div>
-              ))}
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="inline-block text-[var(--blade-green)] font-semibold text-sm uppercase tracking-wider mb-4">Why Choose Us</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--blade-charcoal)] mb-6">Built Around <span className="text-[var(--blade-green)]">Your Property.</span></h2>
+          <p className="text-[var(--blade-gray)] text-lg leading-relaxed">From a landscape installation to a complete property refresh, we bring a personal, organized approach to your project. Clear scopes, on-site consultations, and direct communication help you move forward with confidence.</p>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature) => (
+            <div key={feature.title} className="flex items-start gap-4 rounded-xl border border-[var(--blade-green)]/10 p-5">
+              <div className="shrink-0 w-11 h-11 bg-[var(--blade-green)]/10 rounded-xl flex items-center justify-center text-[var(--blade-green)]">{feature.icon}</div>
+              <div><h3 className="font-semibold text-[var(--blade-charcoal)] mb-2">{feature.title}</h3><p className="text-sm text-[var(--blade-gray)] leading-relaxed">{feature.description}</p></div>
             </div>
+          ))}
+        </div>
+        <div className="mt-10 max-w-2xl mx-auto rounded-2xl bg-[var(--blade-off-white)] border border-[var(--blade-green)]/10 p-5 sm:p-6 text-center">
+          <h3 className="text-lg font-bold text-[var(--blade-charcoal)] mb-4">Meet the Owners</h3>
+          <div className="flex justify-center gap-3 mb-3">
+            <Image src="/media/optimized/owner-brock.webp" alt="Brock Rose, Blade Landscaping co-owner" width={56} height={74} sizes="56px" className="w-12 sm:w-14 aspect-[3/4] object-cover object-top rounded-lg" />
+            <div className="w-12 sm:w-14 aspect-[3/4] overflow-hidden rounded-lg shrink-0"><Image src="/media/optimized/owner-jackson.webp" alt="Jackson Phillips, Blade Landscaping co-owner" width={56} height={74} sizes="56px" className="w-full h-full object-cover object-top scale-[1.3] origin-[50%_20%]" /></div>
           </div>
-
-          {/* Right Visual */}
-          <div
-            className={`relative transition-all duration-700 delay-300 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}
-          >
-            <div className="relative">
-              {/* Main Visual - Gradient with icon */}
-              <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[var(--blade-green-dark)] via-[var(--blade-green)] to-[var(--blade-green-light)]">
-                {/* Decorative pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <defs>
-                      <pattern id="about-pattern" patternUnits="userSpaceOnUse" width="10" height="10">
-                        <circle cx="5" cy="5" r="1" fill="white"/>
-                      </pattern>
-                    </defs>
-                    <rect width="100" height="100" fill="url(#about-pattern)"/>
-                  </svg>
-                </div>
-                {/* Student photo collage */}
-                <div className="absolute inset-0 p-4">
-                  <div className="grid grid-cols-2 grid-rows-2 gap-3 h-full">
-                    <img
-                      src="/media/students/IMG_9968.png"
-                      alt="Student team photo 1"
-                      className="col-span-1 row-span-2 w-full h-full object-cover rounded-xl shadow-lg"
-                      loading="lazy"
-                    />
-                    <img
-                      src="/media/students/IMG_2963.png"
-                      alt="Student team photo 2"
-                      className="w-full h-full object-cover rounded-xl shadow-lg"
-                      loading="lazy"
-                    />
-                    <img
-                      src="/media/students/mulcharcher.png"
-                      alt="Student team photo 3"
-                      className="w-full h-full object-cover object-top rounded-xl shadow-lg"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Floating Stats Card */}
-              <div className="absolute -bottom-8 -left-8 bg-white rounded-2xl shadow-xl p-6 max-w-[220px]">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[var(--blade-green)] rounded-full flex items-center justify-center">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <div className="text-2xl font-bold text-[var(--blade-charcoal)]">100%</div>
-                    <div className="text-sm text-[var(--blade-gray)]">Student Team</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Decorative Element */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-[var(--blade-lime)]/20 rounded-full blur-2xl" />
-              <div className="absolute -bottom-4 right-8 w-32 h-32 bg-[var(--blade-green)]/10 rounded-full blur-2xl" />
-            </div>
-
-            {/* Owners Callout */}
-            <div className="mt-10 rounded-2xl bg-white/90 shadow-lg p-5 sm:p-6 text-center">
-              <h3 className="text-2xl font-bold text-[var(--blade-charcoal)] mb-5">Meet the Owners</h3>
-              <div className="grid grid-cols-2 gap-4 mx-auto mb-5 max-w-[256px]">
-                <figure>
-                  <Image
-                    src="/media/homepage/photos/owner-black-polo.png"
-                    alt="Brock Rose, Blade Landscaping co-owner"
-                    width={1086}
-                    height={1448}
-                    sizes="120px"
-                    className="w-full aspect-[3/4] object-cover object-top rounded-xl border border-[var(--blade-green)]/20"
-                  />
-
-                  <figcaption className="mt-2 text-sm font-semibold text-[var(--blade-charcoal)]">Brock Rose</figcaption>
-                </figure>
-                <figure>
-                  <div className="aspect-[3/4] overflow-hidden rounded-xl border border-[var(--blade-green)]/20">
-                  <Image
-                    src="/media/homepage/photos/owner-suit.jpeg"
-                    alt="Jackson Phillips, Blade Landscaping co-owner"
-                    width={1100}
-                    height={1430}
-                    sizes="156px"
-                    className="w-full h-full object-cover object-top scale-[1.3] origin-[50%_20%]"
-                  />
-                  </div>
-
-                  <figcaption className="mt-2 text-sm font-semibold text-[var(--blade-charcoal)]">Jackson Phillips</figcaption>
-                </figure>
-              </div>
-              <p className="mx-auto max-w-prose text-sm text-[var(--blade-gray)] leading-relaxed text-pretty">
-                We&apos;re both Construction Science majors at Texas A&amp;M University, building
-                our futures through hard work in the classroom and in your neighborhood. Alongside
-                our studies, we run Blade Landscaping with a crew of fellow college students,
-                helping each other earn our way through school. We bring pride, care, and attention
-                to detail to every property we serve. When you choose Blade, you&apos;re investing
-                in your outdoor space and helping hardworking students pay for college, gain
-                hands-on experience, and build a strong foundation for what comes next.
-              </p>
-            </div>
-          </div>
+          <p className="text-xs text-[var(--blade-green)] font-semibold mb-3">Brock Rose &amp; Jackson Phillips</p>
+          <p className="text-xs sm:text-sm text-[var(--blade-gray)] leading-relaxed max-w-xl mx-auto">
+            We&apos;re Brock Rose and Jackson Phillips, the owners of Blade Landscaping.
+            We work with homeowners and commercial property owners throughout
+            Bryan–College Station to plan landscape installations, renovations, and
+            outdoor improvements. When you contact Blade, you can speak directly with us
+            about your ideas, your property, and the next step for your project.
+          </p>
         </div>
       </div>
     </section>

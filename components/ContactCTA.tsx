@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-export default function ContactCTA() {
+export default function ContactCTA({ commercial = false }: { commercial?: boolean }) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -46,16 +46,16 @@ export default function ContactCTA() {
           }`}
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to Transform Your Outdoor Space?
+            Let&apos;s Bring Your Outdoor Project to Life
           </h2>
           <p className="text-xl text-white/90 mb-10 leading-relaxed">
-            Contact us today for a free consultation and quote. Let&apos;s bring your landscaping
-            vision to life!
+            Tell us about your property and the improvements you have in mind.
+            We&apos;ll help you take the next step with an on-site consultation and project estimate.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Link href="/contact" className="btn-white text-lg px-8 py-4">
-              Get Free Quote
+            <Link href={commercial ? '/contact?project=commercial' : '/contact'} className="btn-white text-lg px-8 py-4">
+              {commercial ? 'Request a Commercial Proposal' : 'Get Your Project Estimate'}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -105,7 +105,7 @@ export default function ContactCTA() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Same-Day Response</span>
+              <span>Direct Owner Communication</span>
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +116,7 @@ export default function ContactCTA() {
                   d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              <span>Licensed & Insured</span>
+              <span>On-Site Consultations</span>
             </div>
           </div>
         </div>

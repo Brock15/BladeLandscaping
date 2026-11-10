@@ -372,3 +372,37 @@ textarea.input-field {
     transform: rotate(360deg);
   }
 }
+
+.skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; background: var(--blade-green-dark); color: white; padding: 12px 18px; border-radius: 8px; }
+.skip-link:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--blade-green-light); outline-offset: 4px; }
+html { scroll-padding-top: 110px; }
+.estimate-form .preview-note { background: #f0f6e9; border: 1px solid #cbdcb8; color: #35551d; padding: 14px 16px; border-radius: 12px; font-size: 13px; margin-bottom: 24px; }
+.estimate-form .form-heading { margin-bottom: 24px; }
+.estimate-form .eyebrow, .form-result .eyebrow { display: block; color: var(--blade-green); font-size: 12px; font-weight: 600; letter-spacing: .1em; margin-bottom: 10px; }
+.estimate-form .form-heading h2, .form-result h2 { font-size: 24px; font-weight: 700; color: var(--blade-charcoal); }
+.estimate-form .form-heading p { font-size: 13px; color: var(--blade-gray); margin-top: 8px; }
+.estimate-form .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.estimate-form label { display: block; font-size: 14px; font-weight: 500; color: var(--blade-charcoal); }
+.estimate-form input, .estimate-form select, .estimate-form textarea { width: 100%; min-width: 0; margin-top: 8px; padding: 14px 16px; background: white; border: 2px solid var(--blade-light); border-radius: 12px; font-size: 16px; font-weight: 400; }
+.estimate-form input:focus, .estimate-form select:focus, .estimate-form textarea:focus { border-color: var(--blade-green); }
+.estimate-form input::placeholder, .estimate-form textarea::placeholder { color: #747d89; }
+.estimate-form textarea { resize: vertical; }
+.estimate-form .photo-field { margin-top: 24px; }
+.estimate-form input[type='file'] { padding: 12px; font-size: 13px; }
+.estimate-form input::file-selector-button { padding: 6px 10px; border-radius: 6px; border: 0; margin-right: 8px; background: #edf3e7; color: var(--blade-green-dark); }
+.estimate-form .optional, .estimate-form .field-help { font-weight: 400; color: var(--blade-gray); }
+.estimate-form .field-help { display: block; font-size: 12px; line-height: 1.6; margin-top: 9px; overflow-wrap: anywhere; }
+.estimate-form .form-submit { margin-top: 28px; }
+.estimate-form .form-submit button, .form-result button { background: var(--gradient-primary); color: white; padding: 15px 24px; border: 0; border-radius: 9999px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 16px; min-height: 52px; }
+.estimate-form .form-submit button { width: 100%; }
+.estimate-form .form-submit p { font-size: 12px; color: var(--blade-gray); margin-top: 12px; }
+.estimate-form .form-error { border: 1px solid #f1c6be; padding: 12px 16px; color: #8b2b1f; background: #fff1ed; border-radius: 8px; margin-top: 20px; font-size: 14px; }
+.form-result { padding: 28px; background: #f0f6e9; border: 1px solid #cbdcb8; border-radius: 16px; }
+.form-result p { margin: 18px 0 24px; color: var(--blade-gray); line-height: 1.8; }
+.estimate-form button:disabled { cursor: wait; opacity: .65; }
+@media (max-width: 600px) { .estimate-form .form-grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

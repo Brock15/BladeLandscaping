@@ -2,12 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const stats = [
-  { number: '100%', label: 'Student-Run' },
-  { number: 'Free', label: 'In-Person Quotes' },
-  { number: '5.0', label: 'Google Rating' },
-  { number: 'Local', label: 'SA Students' },
+  { number: 'Local', label: 'Owner-Operated' },
+  { number: 'On-Site', label: 'Project Consultations' },
+  { number: 'Custom', label: 'Property Improvements' },
+  { number: 'Direct', label: 'Owner Communication' },
 ];
 
 const values = [
@@ -27,7 +28,7 @@ const values = [
       </svg>
     ),
     title: 'Fair & Transparent Pricing',
-    description: 'No hidden fees or surprise charges. We provide detailed quotes upfront so you know exactly what to expect.',
+    description: 'We discuss the project scope, materials, and estimate with you before moving forward.',
   },
   {
     icon: (
@@ -44,8 +45,8 @@ const values = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    title: 'Eco-Friendly Practices',
-    description: 'We use sustainable methods and eco-friendly products that are better for your lawn and the environment.',
+    title: 'Property-Focused Solutions',
+    description: 'Your property conditions, priorities, and ongoing care needs help guide the proposed improvements.',
   },
 ];
 
@@ -84,8 +85,8 @@ export default function AboutPage() {
               Our Story
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
-              We&apos;re a team of hardworking college students bringing fresh energy
-              and dedication to landscaping in College Station.
+              Locally owned and personally involved. Landscape installations and
+              property improvements throughout Bryan–College Station.
             </p>
           </div>
         </div>
@@ -102,9 +103,11 @@ export default function AboutPage() {
               }`}
             >
               <div className="relative aspect-[1371/1147] rounded-2xl overflow-hidden shadow-2xl">
-                <img
+                <Image
                   src="/media/students/blade-crew-at-work.png"
-                  alt="Blade Landscaping student crew with tools at a mulching job"
+                  alt="Blade Landscaping crew with tools at a landscape project"
+                  fill
+                  sizes="(max-width: 1024px) 90vw, 45vw"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -122,13 +125,13 @@ export default function AboutPage() {
                 Who We Are
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--blade-charcoal)] mb-6">
-                Students Working Hard for Your Yard
+                Local Owners. A Personal Commitment.
               </h2>
               <div className="space-y-4 text-[var(--blade-gray)] text-lg leading-relaxed">
                 <p>
-                  Blade Landscaping is proudly owned and operated by local students. We&apos;re college
-                  students who started this business to earn money, build real-world
-                  skills, and serve our College Station community.
+                  Blade Landscaping is led by Brock Rose and Jackson Phillips. We work with
+                  homeowners and commercial property owners on landscape installations,
+                  renovations, and outdoor improvements in Bryan–College Station.
                 </p>
                 <p>
                   What sets us apart? <strong>Every quote is given in person.</strong> We believe in
@@ -137,8 +140,8 @@ export default function AboutPage() {
                   personal touch.
                 </p>
                 <p>
-                  We may be young, but we work hard and take pride in every job. When you hire Blade
-                  Landscaping, you&apos;re supporting local students while getting quality results at fair prices.
+                  We take pride in careful preparation and hands-on work. When you hire Blade
+                  Landscaping, you work with a local team focused on your property and the details of your project.
                 </p>
               </div>
             </div>
@@ -213,20 +216,22 @@ export default function AboutPage() {
               Our Team
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--blade-charcoal)] mb-6">
-              Meet the Students
+              Meet the Blade Team
             </h2>
             <p className="text-[var(--blade-gray)] text-lg leading-relaxed">
-              We&apos;re a crew of motivated college students who love working outdoors
-              and take pride in making your property look amazing.
+              Our crew takes pride in careful preparation, hands-on work, and
+              outdoor improvements that make a difference to your property.
             </p>
           </div>
 
           <div className="max-w-2xl mx-auto">
             <div className="bg-white rounded-2xl overflow-hidden shadow-lg">
               <div className="relative aspect-[1371/1147]">
-                <img
+                <Image
                   src="/media/students/blade-crew-at-work.png"
                   alt="Blade Landscaping crew"
+                  fill
+                  sizes="(max-width: 768px) 90vw, 672px"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -235,10 +240,10 @@ export default function AboutPage() {
                 <h3 className="text-2xl font-bold text-[var(--blade-charcoal)] mb-2">
                   Blade Landscaping Crew
                 </h3>
-                <p className="text-[var(--blade-green)] font-semibold mb-4">Local Student Workers</p>
+                <p className="text-[var(--blade-green)] font-semibold mb-4">Locally Owned & Operated</p>
                 <p className="text-[var(--blade-gray)]">
-                  College students working hard to earn money and build skills while making
-                  College Station yards look their best. Support local students!
+                  A local crew working with Brock and Jackson to bring landscape
+                  installations and property improvements to life.
                 </p>
               </div>
             </div>

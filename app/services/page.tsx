@@ -2,11 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import { services as serviceDirectory } from '@/lib/services';
 
 const services = [
   {
     id: 'mulching',
-    title: 'Mulching',
+    title: 'Landscape Bed Renovations',
     subtitle: 'Garden Bed Enhancement',
     description:
       'Quality mulch installation to enhance the beauty of your garden beds while providing essential benefits like moisture retention, weed prevention, and soil temperature regulation.',
@@ -28,7 +30,7 @@ const services = [
   },
   {
     id: 'installations',
-    title: 'Installations',
+    title: 'Landscape Installation',
     subtitle: 'Professional Install Services',
     description:
       'Professional installation of pavers, stones, soil, landscape fabric, borders, and more. We ensure clean lines, long-lasting durability, and a polished finish.',
@@ -59,7 +61,7 @@ const services = [
       'Tree, bush, and shrub removal',
       'Rock and concrete removal',
       'Heavy construction removal with jackhammers',
-      'Stump grinding',
+      'Preparation for landscape renovations',
       'Debris hauling and disposal',
       'Overgrown lot clearing',
       'Storm damage cleanup',
@@ -75,16 +77,16 @@ const services = [
   },
   {
     id: 'landscape-design',
-    title: 'Landscape Design',
-    subtitle: 'Custom Outdoor Solutions',
+    title: 'Outdoor Improvements',
+    subtitle: 'Property-Focused Planning',
     description:
-      'Transform your outdoor space with our professional landscape design services. We create custom plans that reflect your style while enhancing your property\'s value and functionality.',
+      'Discuss how you want to use your outdoor space, the landscape improvements you have in mind, and the preparation needed to bring the scope together.',
     features: [
       'Custom design consultations',
-      '3D landscape renderings',
+      'Material and planting discussions',
       'Hardscape integration',
-      'Irrigation system design',
-      'Outdoor lighting plans',
+      'Site access and preparation review',
+      'Coordination of project details',
       'Phased implementation options',
     ],
     gradient: 'from-cyan-600 to-blue-800',
@@ -97,20 +99,20 @@ const services = [
   },
   {
     id: 'moving',
-    title: 'Moving',
-    subtitle: 'Heavy Lifting & Hauling',
+    title: 'Commercial Landscaping',
+    subtitle: 'Improvements & Recurring Care',
     description:
-      'Careful moving help for heavy items, furniture, and yard materials. We show up on time and handle your items with care.',
+      'Landscape improvements, property cleanup, and recurring care scoped around the needs of businesses, managed properties, apartment communities, and HOAs.',
     features: [
-      'Furniture and item moving',
-      'Loading and unloading help',
-      'Short-distance relocations',
-      'Garage and storage moves',
-      'Protective handling and placement',
-      'Cleanup after the move',
+      'Landscape renovations and bed refreshes',
+      'Seasonal planting and improvements',
+      'Property cleanup and vegetation management',
+      'Recurring care proposals',
+      'Property-specific scopes and scheduling',
+      'Coordination with property managers',
     ],
     gradient: 'from-lime-600 to-green-800',
-    imageUrl: '/media/gallery/photos/blade-crew-moving.png',
+    imageUrl: '/media/optimized/commercial.webp',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h8m4 4H4m12 4H8m8-8v10a2 2 0 01-2 2H10a2 2 0 01-2-2V7m8 0l-1.5-3h-5L8 7" />
@@ -155,12 +157,14 @@ export default function ServicesPage() {
               Our Main Services
             </h1>
             <p className="text-xl text-[var(--blade-silver)] leading-relaxed">
-              Comprehensive landscaping solutions tailored to your needs. From routine maintenance
-              to complete landscape transformations, we do it all.
+              Landscape installation, renovation, and outdoor improvements tailored to
+              residential and commercial properties in Bryan–College Station.
             </p>
           </div>
         </div>
       </section>
+
+      <section className="bg-[var(--blade-off-white)] py-10"><div className="container-custom"><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{serviceDirectory.map((service) => <Link key={service.slug} href={`/services/${service.slug}`} className="flex items-center justify-between gap-4 bg-white border border-[var(--blade-light)] rounded-xl px-5 py-4 font-semibold text-[var(--blade-green-dark)] hover:shadow-md transition-shadow">{service.shortTitle}<span aria-hidden="true">→</span></Link>)}</div></div></section>
 
       {/* Services List */}
       <section ref={sectionRef} className="section-padding bg-white">
@@ -241,9 +245,11 @@ export default function ServicesPage() {
                         preload="metadata"
                       />
                     ) : service.imageUrl ? (
-                      <img
+                      <Image
                         src={service.imageUrl}
                         alt={service.title}
+                        fill
+                        sizes="(max-width: 1024px) 90vw, 45vw"
                         className="absolute inset-0 w-full h-full object-cover"
                         loading="lazy"
                       />

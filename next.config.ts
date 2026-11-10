@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
         hostname: 'placehold.co',
       },
     ],
-    unoptimized: true,
+    formats: ['image/avif', 'image/webp'],
   },
 };
 

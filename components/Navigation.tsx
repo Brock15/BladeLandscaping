@@ -24,6 +24,14 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsMobileMenuOpen(false);
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, []);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -36,7 +44,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-0 group">
-            <div className="relative w-16 h-16 -mr-1 transition-transform group-hover:scale-105">
+            <div className="relative w-12 h-12 sm:w-16 sm:h-16 -mr-1 transition-transform group-hover:scale-105">
               <Image
                 src="/BladeAndLeaf.png"
                 alt="Blade Landscaping"
@@ -45,7 +53,7 @@ export default function Navigation() {
                 priority
               />
             </div>
-            <span className="text-xl font-bold text-white"
+            <span className="text-lg sm:text-xl font-bold text-white"
             >
               Blade Landscaping
             </span>
@@ -63,7 +71,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Link href="/contact" className="btn-primary">
-              Get a Quote
+              Request an Estimate
             </Link>
           </div>
 
@@ -71,7 +79,9 @@ export default function Navigation() {
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="lg:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             <span
               className={`w-6 h-0.5 transition-all bg-white ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}
@@ -87,7 +97,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mobile-menu-enter mt-4 pb-4 border-t border-white/20">
+          <div id="mobile-navigation" className="lg:hidden mobile-menu-enter mt-4 pb-4 border-t border-white/20">
             <div className="flex flex-col gap-4 pt-4">
               {navLinks.map((link) => (
                 <Link
@@ -104,7 +114,7 @@ export default function Navigation() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="btn-primary w-fit"
               >
-                Get a Quote
+                Request an Estimate
               </Link>
             </div>
           </div>
