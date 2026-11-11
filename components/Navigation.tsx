@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import EstimateLink from './EstimateLink';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -20,8 +21,12 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+    const initialScrollCheck = requestAnimationFrame(handleScroll);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(initialScrollCheck);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -70,9 +75,9 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="btn-primary">
+            <EstimateLink className="btn-primary">
               Request an Estimate
-            </Link>
+            </EstimateLink>
           </div>
 
           {/* Mobile Menu Button */}
@@ -109,13 +114,12 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
+              <EstimateLink
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="btn-primary w-fit"
               >
                 Request an Estimate
-              </Link>
+              </EstimateLink>
             </div>
           </div>
         )}

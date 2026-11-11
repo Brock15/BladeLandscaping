@@ -49,10 +49,11 @@ export const services: Service[] = [
       { question: 'Can we renovate in stages?', answer: 'We can discuss priorities and practical phases. Material access and preparation sometimes make it more efficient to combine parts of the work; we will explain those considerations.' },
       { question: 'Can you preserve existing trees or plants?', answer: 'Let us know what you want to retain during the walkthrough. We will discuss working around those features and identify where specialist advice may be appropriate.' },
     ],
-    image: '/media/optimized/landscape-hero.webp', imageAlt: 'Completed decorative rock bed surrounding a tree beside a residential driveway', imageCaption: 'A residential rock bed improvement from our existing portfolio.',
+    image: '/media/ready/front-yard-renovation.webp', imageAlt: 'Decorative rock beds surrounding an established tree in a residential front yard', imageCaption: 'Residential landscape improvements from the supplied Blade project footage.',
   },
   {
     slug: 'hardscaping-outdoor-living', number: '03', title: 'Patios, Hardscaping & Outdoor Living', shortTitle: 'Patios & hardscaping',
+    image: '/media/ready/flagstone-patio.webp', imageAlt: 'Flagstone patio beside a covered porch with a circular fire-pit ring', imageCaption: 'Natural-stone patio work from the supplied Blade project photographs.',
     summary: 'Explore paver areas, garden paths, borders, and outdoor surfaces suited to your property.',
     introduction: 'Create a more useful connection between your home and yard.',
     detail: 'A defined path or outdoor seating area can change how a property is used. We discuss the intended use, layout, surface materials, site access, and preparation before proposing an installation. Each request is evaluated on its specific scope and site conditions.',
@@ -70,6 +71,7 @@ export const services: Service[] = [
   },
   {
     slug: 'drainage-grading', number: '04', title: 'Drainage & Grading', shortTitle: 'Drainage & grading',
+    image: '/media/ready/soil-preparation.webp', imageAlt: 'Compact loader preparing soil in a residential yard', imageCaption: 'Landscape ground preparation; this photograph does not document an engineered drainage system.',
     summary: 'Start with an on-site review of pooling water, uneven areas, and landscape surface conditions.',
     introduction: 'Understand the site before deciding on a solution.',
     detail: 'Standing water or an uneven yard needs a site-specific conversation. We begin with the affected areas, the direction water moves, and the surrounding landscape. We then determine whether a surface landscape improvement fits our scope or if the property needs specialist evaluation first.',

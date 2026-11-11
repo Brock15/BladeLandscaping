@@ -1,14 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-
-const services = [
-  'Landscape Installation',
-  'Landscape Renovations',
-  'Rock & Stone Landscaping',
-  'Sod & Planting',
-  'Property Preparation',
-  'Commercial Landscaping',
-];
+import { services } from '@/lib/services';
+import EstimateLink from './EstimateLink';
 
 const quickLinks = [
   { href: '/', label: 'Home' },
@@ -75,12 +68,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-6">Our Services</h3>
             <ul className="space-y-3">
               {services.map((service) => (
-                <li key={service}>
+                <li key={service.slug}>
                   <Link
-                    href="/services"
+                    href={`/services/${service.slug}`}
                     className="text-[var(--blade-silver)] hover:text-[var(--blade-green-light)] transition-colors"
                   >
-                    {service}
+                    {service.shortTitle}
                   </Link>
                 </li>
               ))}
@@ -191,12 +184,11 @@ export default function Footer() {
               >
                 Our Work
               </Link>
-              <Link
-                href="/contact"
+              <EstimateLink
                 className="text-[var(--blade-silver)] hover:text-white transition-colors"
               >
                 Request an Estimate
-              </Link>
+              </EstimateLink>
             </div>
           </div>
         </div>

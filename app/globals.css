@@ -402,6 +402,54 @@ html { scroll-padding-top: 110px; }
 .form-result p { margin: 18px 0 24px; color: var(--blade-gray); line-height: 1.8; }
 .estimate-form button:disabled { cursor: wait; opacity: .65; }
 @media (max-width: 600px) { .estimate-form .form-grid { grid-template-columns: 1fr; } }
+.section-eyebrow { display: block; color: var(--blade-green); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 1rem; }
+.section-title { font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; color: var(--blade-charcoal); line-height: 1.15; margin-bottom: 1.25rem; }
+.section-description { color: var(--blade-gray); font-size: 1.08rem; line-height: 1.8; }
+.work-showcase { display: grid; grid-template-columns: 1.1fr 1fr; grid-template-rows: 300px 300px; gap: 24px; }
+.work-tile { position: relative; display: block; overflow: hidden; border-radius: 20px; background: var(--blade-charcoal); }
+.work-tile-lead { grid-row: span 2; }
+.work-caption { position: absolute; inset: auto 0 0; color: white; padding: 64px 24px 24px; background: linear-gradient(transparent, rgba(10, 20, 20, .92)); }
+.gallery-filter { min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid #d7dfd2; color: var(--blade-green-dark); background: white; font-size: .875rem; font-weight: 600; cursor: pointer; }
+.gallery-filter.is-selected { background: var(--blade-green-dark); color: white; border-color: var(--blade-green-dark); }
+.gallery-image-button { position: relative; display: block; width: 100%; text-align: left; cursor: zoom-in; }
+.gallery-open-label { position: absolute; bottom: 12px; right: 12px; border-radius: 999px; padding: 8px 12px; background: rgba(26,35,50,.9); color: white; font-size: .75rem; font-weight: 600; }
+.gallery-video { display: block; width: 100%; height: 360px; background: #111820; object-fit: contain; }
+.project-dialog { width: min(1100px, 96vw); max-width: 96vw; max-height: 94dvh; margin: auto; padding: 18px; border: 1px solid #485261; border-radius: 16px; color: white; background: var(--blade-charcoal); }
+.project-dialog::backdrop { background: rgba(0,0,0,.85); }
+.viewer-toolbar, .viewer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.viewer-toolbar > div { min-width: 0; }
+.viewer-control { flex-shrink: 0; padding: 10px 14px; min-height: 44px; border-radius: 999px; border: 1px solid #596271; font-size: .875rem; cursor: pointer; }
+.viewer-control:hover { background: #354355; }
+.viewer-image { height: min(66dvh, 760px); margin: 14px 0; display: flex; align-items: center; justify-content: center; }
+.viewer-image img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; }
+.owner-portrait { width: 144px; height: 184px; object-fit: cover; object-position: top; border-radius: 16px; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 64px; }
+.contact-info-card { padding: 22px; border-radius: 14px; background: var(--blade-off-white); min-width: 0; }
+.contact-info-card h3 { color: var(--blade-charcoal); font-size: .875rem; font-weight: 600; margin-bottom: 8px; }
+.contact-info-card a { color: var(--blade-green); font-size: 1rem; font-weight: 600; overflow-wrap: anywhere; }
+.contact-info-card p { color: var(--blade-gray); font-size: .875rem; line-height: 1.7; margin-top: 6px; }
+.estimate-form { min-width: 0; }
+.estimate-form .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.estimate-form label { min-width: 0; }
+.estimate-form .form-honeypot { position: absolute; width: 1px; height: 1px; clip-path: inset(50%); overflow: hidden; }
+.estimate-form .form-submit button, .form-result button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; text-align: center; }
+.btn-primary, .btn-secondary, .btn-white { max-width: 100%; justify-content: center; text-align: center; }
+footer a[href^='mailto:'] { overflow-wrap: anywhere; }
+@media (max-width: 1023px) { .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 48px; } }
+@media (max-width: 767px) {
+  .section-padding { padding: 56px 8px; }
+  .work-showcase { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; gap: 20px; }
+  .work-tile { height: 340px; }
+  .work-tile-lead { grid-row: auto; height: 460px; }
+  .work-caption { padding: 64px 20px 20px; }
+  .owner-portrait { width: 100px; height: 130px; }
+}
+@media (max-width: 600px) {
+  .estimate-form .form-grid { grid-template-columns: minmax(0, 1fr); }
+  .project-dialog { padding: 12px; }
+  .viewer-toolbar h2 { font-size: .875rem; }
+  .viewer-control { padding: 9px 12px; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }

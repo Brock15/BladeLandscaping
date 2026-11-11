@@ -15,8 +15,11 @@ int main(int argumentCount, const char *arguments[]) {
         generator.maximumSize = CGSizeMake(1600, 1600);
         NSMutableArray *frames = [NSMutableArray array];
         NSArray *fractions = @[@0.12, @0.5, @0.86];
-        for (NSUInteger index = 0; index < fractions.count; index++) {
-            CMTime time = CMTimeMakeWithSeconds(MAX(0, duration * [fractions[index] doubleValue]), 600);
+        NSArray *seconds = argumentCount > 3 ? [@(arguments[3]) componentsSeparatedByString:@","] : @[];
+        NSArray *samples = seconds.count ? seconds : fractions;
+        for (NSUInteger index = 0; index < samples.count; index++) {
+            double sampleTime = seconds.count ? [samples[index] doubleValue] : duration * [samples[index] doubleValue];
+            CMTime time = CMTimeMakeWithSeconds(MAX(0, MIN(duration - 0.05, sampleTime)), 600);
             CGImageRef frame = [generator copyCGImageAtTime:time actualTime:NULL error:nil];
             if (frame) {
                 NSBitmapImageRep *bitmap = [[NSBitmapImageRep alloc] initWithCGImage:frame];

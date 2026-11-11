@@ -1,17 +1,25 @@
-# Review sources
+# Review provenance audit — November 11, 2026
 
-The local review page contains all 11 entries from the previously published website plus three newer Google entries. Existing entries were recovered from `app/reviews/page.tsx` in the repository's saved version. The three historical entries with source `other` remain labeled customer testimonials; they are not attributed to Google or Nextdoor.
+The website now displays nine historical customer entries: six attributed to Google and three Nextdoor recommendations. These are displayed as individual quotations, not as a combined rating or a total for the business. Nextdoor recommendations are not assigned Google stars.
 
-The Google listing was checked directly on November 10, 2026. It matches the company website and business phone and shows 5.0 from 9 Google reviews. Eight of those Google entries appear in the local website after excluding Jackson Peltier, as requested. Historical Nextdoor recommendations and customer testimonials are also preserved.
+## Excluded from public display
 
-New Google sources:
+- Jackson Phillips: same name as Blade co-owner. Excluded because independence is unresolved; no claim that the Google author has been conclusively identified. Jackson Peltier remains excluded as previously requested.
+- Ava Weinstein: moving/furniture feedback referring to “Blair,” unrelated to the landscaping services advertised here.
+- Maria Rodriguez, James Thompson and Sarah Chen: generic testimonial entries without any supporting source in the repository. Excluded pending original evidence. Their original records remain in the private source archive in `lib/reviews.ts`; no public claim of verification is made.
+- The 47+ combined reviews/recommendations badge: no countable source supports the aggregate. It is omitted rather than presented alongside a Google rating.
+- Google 5.0 / 9 reviews: the prior audit documents this as a November 10 snapshot of the listing. The listing total includes entries excluded from this website, so it is not presented as a score for the selected quotations. No fresh live count was obtained in this pass.
 
-- William Rupley: https://share.google/sgSTqtgPiSJHc4C2E
-- Viki Coumbe: https://share.google/cx8K3bBnHwvybGK59
-- Jackson Phillips: https://share.google/ljSWV8jeTotSrPB61
+## Sources retained
 
-New review text is transcribed without spelling corrections. Viki's review is a short, marked excerpt linked to the original. No review dates or reviewer review-count metadata are invented.
+William Rupley: https://share.google/sgSTqtgPiSJHc4C2E
 
-The 47+ reviews/recommendations badge is restored from the existing published website at the owner's explicit request. It is an overall company badge, not the Google review count. The current Google count is shown separately on the review page. These values are static snapshots, not a live synchronization.
+Viki Coumbe: https://share.google/cx8K3bBnHwvybGK59
 
-No Google review was posted, edited, deleted, reported, or responded to during this work. Only the local website is changed.
+Both have direct source links from the prior November 10 audit. Viki remains a marked excerpt; quotation spelling is not corrected.
+
+Fed Bread, Katie Pane, Art Scott, SM C, Theresa Fan, Margaret White and Saundra Edwards are historical quotations recovered from the previously published website. Their individual original review permalinks have not been re-established in this pass. Existing reviewer photos for Fed Bread remain intact. Nextdoor's business page is linked as a general destination, not as proof of a particular recommendation count.
+
+## Limitations
+
+Independent identity verification and original permalinks for the historical quotations remain an owner follow-up. No fabricated review, date, location or count has been added. No Google or Nextdoor listing was changed or contacted during this local website pass.

@@ -12,13 +12,13 @@ export type CustomerReview = {
   location?: string;
 };
 
-export const reviewSummary = { displayCount: '47+', label: 'Reviews & Recommendations', googleRating: '5.0', googleReviewCount: 9 };
+export const reviewSummary = { label: 'Google Reviews & Nextdoor Recommendations' };
 
 export function reviewSourceLabel(review: CustomerReview) {
-  return review.source === 'Testimonial' ? 'Customer testimonial' : `${review.source} review`;
+  return review.source === 'Testimonial' ? 'Customer testimonial' : review.source === 'Nextdoor' ? 'Nextdoor recommendation' : 'Google review';
 }
 
-export const customerReviews: CustomerReview[] = [
+const reviewArchive: CustomerReview[] = [
   {
     id: 'william-rupley', name: 'William Rupley', source: 'Google', rating: 5, initials: 'WR', color: 'bg-emerald-700',
     text: 'Hardworking and grea price. Did a really nice job getting all our flower beds looking great and removing 5 raised garden beds in backyard.',
@@ -84,5 +84,8 @@ export const customerReviews: CustomerReview[] = [
     location: 'The Dominion, San Antonio',
   },
 ];
+
+const excludedReviewIds = new Set(['jackson-phillips', 'ava-weinstein', 'maria-rodriguez', 'james-thompson', 'sarah-chen']);
+export const customerReviews = reviewArchive.filter((review) => !excludedReviewIds.has(review.id));
 
 export const featuredReviews = ['william-rupley', 'viki-coumbe', 'art-scott'].map((id) => customerReviews.find((review) => review.id === id)!);

@@ -29,14 +29,18 @@ export type ProjectLead = {
 };
 
 export function validateInquiry(fields: Record<string, unknown>): string | null {
-  const required = ['name', 'email', 'phone', 'propertyLocation', 'propertyType', 'service', 'budget', 'timeline', 'message'];
+  const required = ['name', 'propertyLocation', 'propertyType', 'service', 'message'];
   if (required.some((field) => typeof fields[field] !== 'string' || !(fields[field] as string).trim())) return 'Please complete the required project details.';
-  if (required.some((field) => (fields[field] as string).length > (field === 'message' ? 5000 : 250))) return 'One of the fields is too long. Please shorten it and try again.';
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email as string)) return 'Please enter a valid email address.';
-  if ((fields.phone as string).replace(/\D/g, '').length < 10) return 'Please include a phone number with an area code.';
+  if (Object.entries(fields).some(([field, value]) => typeof value === 'string' && value.length > (field === 'message' ? 5000 : field === 'name' ? 160 : 250))) return 'One of the fields is too long. Please shorten it and try again.';
+  const email = typeof fields.email === 'string' ? fields.email.trim() : '';
+  const phone = typeof fields.phone === 'string' ? fields.phone.trim() : '';
+  if (!email && !phone) return 'Please provide a phone number or email so we can respond.';
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Please enter a valid email address.';
+  if (phone && phone.replace(/\D/g, '').length < 10) return 'Please include a phone number with an area code.';
   if (!['Residential', 'Commercial'].includes(fields.propertyType as string)) return 'Please select the property type.';
   if (!projectOptions.some(([value]) => value === fields.service)) return 'Please select a project type.';
-  if (!budgetOptions.includes(fields.budget as string) || !timelineOptions.includes(fields.timeline as string)) return 'Please select a budget range and timeline.';
+  if (fields.budget && !budgetOptions.includes(fields.budget as string)) return 'Please select a valid budget range or leave it blank.';
+  if (fields.timeline && !timelineOptions.includes(fields.timeline as string)) return 'Please select a valid timeline or leave it blank.';
   return null;
 }
 
