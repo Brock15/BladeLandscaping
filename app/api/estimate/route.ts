@@ -1,27 +1,61 @@
-import { NextResponse } from 'next/server';
-import { validateInquiry, validatePhotos, type ProjectLead } from '@/lib/leads';
+import { createHmac } from 'node:crypto';
+import { InquiryError, readInquiry } from '@/lib/inquiry-request';
+import { projectOptions } from '@/lib/leads';
+
+export const runtime = 'nodejs';
+const reply = (value: unknown, status: number) => Response.json(value, { status, headers: { 'Cache-Control': 'no-store' } });
+
+function intakeConnection() {
+  const endpoint = process.env.BLADE_HQ_INTAKE_URL || '';
+  const secret = process.env.BLADE_HQ_INTAKE_SECRET || '';
+  if (process.env.BLADE_HQ_INTAKE_ENABLED !== 'true' || !endpoint || secret.length < 32) throw new Error('Estimate intake is not connected yet. Please call Blade Landscaping.');
+  const target = new URL(endpoint);
+  const local = target.protocol === 'http:' && ['localhost', '127.0.0.1'].includes(target.hostname);
+  if ((!local && target.protocol !== 'https:') || target.pathname !== '/api/website/estimate-requests' || target.username || target.password || target.search || target.hash) throw new Error('Estimate intake is not configured.');
+  return { target, secret };
+}
+async function sendToHQ(connection: ReturnType<typeof intakeConnection>, payload: unknown) {
+  const raw = JSON.stringify(payload);
+  const timestamp = String(Date.now());
+  const signature = createHmac('sha256', connection.secret).update(`${timestamp}.${raw}`).digest('hex');
+  return fetch(connection.target, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Blade-Timestamp': timestamp, 'X-Blade-Signature': signature }, body: raw, signal: AbortSignal.timeout(30000), redirect: 'error', cache: 'no-store' });
+}
+async function photoIntakeReady(connection: ReturnType<typeof intakeConnection>) {
+  const response = await sendToHQ(connection, { check: 'estimate-intake' });
+  if (!response.ok) return false;
+  const result = await response.json();
+  return result.ready === true && result.photoUploads === true;
+}
+
+// A signed, read-only check verifies the live connection without creating a lead.
+export async function GET() {
+  try {
+    const ready = await photoIntakeReady(intakeConnection());
+    return reply({ ready, photoUploads: ready }, ready ? 200 : 503);
+  } catch { return reply({ ready: false, photoUploads: false }, 503); }
+}
 
 export async function POST(request: Request) {
-  if (process.env.NODE_ENV !== 'development') return NextResponse.json({ error: 'Not found' }, { status: 404 });
-  if (Number(request.headers.get('content-length')) > 22 * 1024 * 1024) return NextResponse.json({ error: 'Please keep your submission under 22 MB.' }, { status: 413 });
+  const origin = request.headers.get('origin'), site = request.headers.get('sec-fetch-site');
+  const host = request.headers.get('host') || new URL(request.url).host;
+  const loopback = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(host);
+  const expectedOrigin = `${loopback ? 'http' : 'https'}://${host}`;
+  if (origin && origin !== expectedOrigin || site && !['same-origin', 'none'].includes(site)) return reply({ error: 'Submit this request from the Blade Landscaping website.' }, 403);
+  let connection: ReturnType<typeof intakeConnection>;
+  try { connection = intakeConnection(); } catch { return reply({ error: 'Estimate intake is not connected yet. Please call Blade Landscaping.' }, 503); }
   try {
-    const data = await request.formData();
-    const fieldNames = ['name', 'email', 'phone', 'propertyLocation', 'propertyType', 'service', 'budget', 'timeline', 'message', 'leadSource', 'sourcePage'];
-    const fields = Object.fromEntries(fieldNames.map((name) => [name, String(data.get(name) ?? '').trim()]));
-    const photos = data.getAll('photos').filter((entry): entry is File => entry instanceof File && entry.size > 0);
-    const error = validateInquiry(fields) || validatePhotos(photos);
-    if (error) return NextResponse.json({ error }, { status: 400 });
-    const lead: ProjectLead = {
-      id: `preview-${crypto.randomUUID()}`,
-      name: fields.name, email: fields.email, phone: fields.phone,
-      propertyLocation: fields.propertyLocation, propertyType: fields.propertyType,
-      service: fields.service, budget: fields.budget, timeline: fields.timeline, message: fields.message,
-      leadSource: fields.leadSource.slice(0, 250) || 'website', sourcePage: fields.sourcePage.slice(0, 500),
-      submittedAt: new Date().toISOString(),
-      photoReferences: photos.map((photo) => ({ name: photo.name, size: photo.size, type: photo.type, storage: 'local-preview-only' })),
-    };
-    return NextResponse.json({ accepted: true, simulated: true, requestId: lead.id, photoCount: lead.photoReferences.length }, { status: 201 });
-  } catch {
-    return NextResponse.json({ error: 'We could not read that submission. Please try again.' }, { status: 400 });
+    const { fields, photos } = await readInquiry(request);
+    if (photos.length && !await photoIntakeReady(connection)) return reply({ error: 'Photo uploads are temporarily unavailable. Please try again or call Blade Landscaping.' }, 503);
+    const visitor = request.headers.get('x-real-ip') || request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    const rateKey = createHmac('sha256', connection.secret).update(`visitor:${visitor}`).digest('hex');
+    const service = projectOptions.find(([value]) => value === fields.service)?.[1] || fields.service;
+    const saved = await sendToHQ(connection, { ...fields, service, photos, rateKey });
+    if (!saved.ok) return reply({ error: saved.status === 429 ? 'Too many requests. Please call Blade Landscaping.' : 'Your details and photos could not be saved. Please retry or call Blade Landscaping.' }, saved.status === 429 ? 429 : 502);
+    const result = await saved.json();
+    if (result.accepted !== true || typeof result.requestId !== 'string' || photos.length > 0 && result.photosAccepted !== true) return reply({ error: 'Your full request was not confirmed. Please retry or call Blade Landscaping.' }, 502);
+    return reply({ accepted: true, requestId: result.requestId }, result.duplicate ? 200 : 201);
+  } catch (error) {
+    if (error instanceof InquiryError) return reply({ error: error.message }, error.status);
+    return reply({ error: 'Your request could not be saved. Please retry or call Blade Landscaping.' }, 502);
   }
 }

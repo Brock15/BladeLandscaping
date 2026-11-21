@@ -12,6 +12,7 @@ export type Service = {
   image?: string;
   imageAlt?: string;
   imageCaption?: string;
+  imagePosition?: string;
 };
 
 export const services: Service[] = [
@@ -103,7 +104,7 @@ export const services: Service[] = [
       { question: 'Will a rock landscape be maintenance free?', answer: 'No. Leaves, weeds, and material movement can still require attention. We will discuss a practical maintenance approach for the proposed area.' },
       { question: 'Can you show examples of existing stone work?', answer: 'Our project gallery includes rock placement and a stone garden path. These are examples of the specific work shown, rather than a claim of large structural hardscape experience.' },
     ],
-    image: '/media/optimized/stone-detail.webp', imageAlt: 'Decorative stone landscape area beside an existing garden', imageCaption: 'Decorative rock placement from our existing project portfolio.',
+    image: '/media/ready/front-yard-renovation.webp', imageAlt: 'Decorative rock beds surrounding an established tree in a residential front yard', imageCaption: 'Residential rock beds from the Blade project gallery.', imagePosition: '50% 50%',
   },
   {
     slug: 'commercial-landscaping', number: '06', title: 'Commercial Landscaping', shortTitle: 'Commercial landscaping',
@@ -122,6 +123,24 @@ export const services: Service[] = [
       { question: 'Can you work with a general contractor or an existing plan?', answer: 'Share the plan and the scope you need covered. We will review project requirements, coordination, and capacity before confirming a proposal.' },
     ],
     image: '/media/optimized/commercial.webp', imageAlt: 'Landscape planting beds at a commercial property', imageCaption: 'A frame from the existing Blade commercial installation video.',
+  },
+  {
+    slug: 'lawn-maintenance', number: '07', title: 'Lawn Maintenance', shortTitle: 'Lawn maintenance',
+    summary: 'Mowing, trimming, edging, and cleanup from $60 per visit, with monthly lawn and property care plans.',
+    introduction: 'A cleaner cut. A tidier yard.',
+    detail: 'Regular care keeps your lawn looking its best between visits. We discuss the lawn size, grass condition, areas to trim or edge, and access before quoting. Whether you need an ongoing schedule or a one-time visit, we confirm the work and timing with you first.',
+    offerings: [
+      { title: 'Lawn mowing', description: 'Mowing at a height suited to your grass and current growing conditions, with the lawn areas defined in your service scope.' },
+      { title: 'Trimming & edging', description: 'Tidy grass around fences, trees, planting beds, walks, and driveways within the agreed service area.' },
+      { title: 'Finishing cleanup', description: 'Clear loose grass from nearby walks, patios, and driveways for a clean finish after mowing.' },
+    ],
+    considerations: 'Share your preferred schedule, current grass height, gate access, pets, and any areas that need special care. These details help us prepare an accurate estimate and plan the visit.',
+    questions: [
+      { question: 'Can I arrange regular lawn maintenance?', answer: 'Yes. Tell us whether you prefer weekly, biweekly, or another schedule. We will discuss grass growth, your property, and route availability before confirming recurring visits.' },
+      { question: 'Can I request a one-time mow?', answer: 'Send your property location, the current lawn condition, and when you would like the work done. We will confirm availability and any additional work an overgrown lawn may need.' },
+      { question: 'How is lawn maintenance priced?', answer: 'The estimate depends on lawn size, grass condition, access, the tasks included, and visit frequency. We review those details with you before agreeing on a price.' },
+    ],
+    image: '/media/ready/lawn-maintenance.webp', imageAlt: 'Blade team member operating a stand-on mower on a residential lawn', imageCaption: 'Mowing and routine lawn care with Blade Landscaping.', imagePosition: '50% 40%',
   },
 ];
 

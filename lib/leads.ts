@@ -7,6 +7,7 @@ export const projectOptions = [
   ['drainage-grading', 'Drainage & grading'],
   ['rock-stone-landscaping', 'Rock & stone landscaping'],
   ['commercial-landscaping', 'Commercial landscaping'],
+  ['lawn-maintenance', 'Lawn maintenance'],
   ['cleanup-removal', 'Property cleanup & removal'],
   ['other', 'Other / help planning my project'],
 ] as const;
@@ -45,9 +46,9 @@ export function validateInquiry(fields: Record<string, unknown>): string | null 
 }
 
 export function validatePhotos(photos: File[]): string | null {
-  if (photos.length > 5) return 'Please select up to five photos.';
-  if (photos.some((photo) => !['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'].includes(photo.type))) return 'Use JPG, PNG, WebP, or HEIC photos.';
-  if (photos.some((photo) => photo.size > 5 * 1024 * 1024)) return 'Each photo must be 5 MB or smaller.';
-  if (photos.reduce((total, photo) => total + photo.size, 0) > 20 * 1024 * 1024) return 'Please keep the combined photo size under 20 MB.';
+  if (photos.length > 6) return 'Please select up to six photos.';
+  if (photos.some((photo) => !['image/jpeg', 'image/png', 'image/webp'].includes(photo.type))) return 'Use JPG, PNG, or WebP photos.';
+  if (photos.some((photo) => photo.size > 10 * 1024 * 1024)) return 'Each photo must be 10 MB or smaller.';
+  if (photos.reduce((total, photo) => total + photo.size, 0) > 30 * 1024 * 1024) return 'Please keep the combined photo size under 30 MB.';
   return null;
 }

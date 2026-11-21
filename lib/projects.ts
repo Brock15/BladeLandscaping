@@ -2,6 +2,7 @@ export const serviceCards = [
   { title: 'Patios & Hardscaping', description: 'Stone and paver spaces for everyday outdoor living.', slug: 'hardscaping-outdoor-living', image: '/media/ready/service-patios.webp', alt: 'Service illustration of Blade uniforms and paver installation' },
   { title: 'Rock & Stone Landscaping', description: 'Natural texture, defined borders, and clean transitions.', slug: 'rock-stone-landscaping', image: '/media/ready/service-stone.webp', alt: 'Service illustration of Blade uniforms and a stone garden path' },
   { title: 'Sod Installation', description: 'Fresh lawn areas, from ground preparation to new sod.', slug: 'landscape-installation', image: '/media/ready/service-sod.webp', alt: 'Service illustration of Blade uniforms and sod installation' },
+  { title: 'Lawn Maintenance', description: 'Regular mowing, clean edges, and a tidy lawn between visits.', slug: 'lawn-maintenance', image: '/media/ready/lawn-maintenance.webp', alt: 'Blade team member mowing a residential lawn', imagePosition: '50% 40%' },
 ];
 
 export type ProjectImage = { src: string; alt: string; width: number; height: number };

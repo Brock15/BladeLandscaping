@@ -1,18 +1,32 @@
 import ContactForm from '@/components/ContactForm';
-import PageIntro from '@/components/PageIntro';
-import { business } from '@/lib/site';
+import { business, pageMetadata } from '@/lib/site';
+import { lawnPlanById } from '@/lib/lawn-care';
+import './estimate.css';
 
-export default async function ContactPage({ searchParams }: { searchParams: Promise<{ project?: string; service?: string }> }) {
+export const metadata = pageMetadata('Request a Free Estimate', 'Tell Blade Landscaping about your project, share photos, and request a free estimate in Bryan–College Station.', '/contact');
+
+export default async function ContactPage({ searchParams }: { searchParams: Promise<{ project?: string; service?: string; plan?: string }> }) {
   const parameters = await searchParams;
   const commercial = parameters.project === 'commercial' || parameters.service === 'commercial-landscaping';
-  return <><PageIntro eyebrow="Get In Touch" title={commercial ? 'Request a Commercial Proposal' : 'Let’s Talk About Your Project'}><p>Share a few details and we&apos;ll discuss the next step for your property.</p></PageIntro>
-    <section className="section-padding bg-white contact-section"><div className="container-custom"><div className="contact-layout">
-      <div className="min-w-0"><h2 className="text-2xl md:text-3xl font-bold mb-6">{commercial ? 'Your Property & Project' : 'Request a Project Estimate'}</h2><ContactForm commercial={commercial} initialService={parameters.service} /></div>
-      <aside className="min-w-0"><h2 className="text-2xl font-bold mb-6">Prefer to Reach Out Directly?</h2><div className="space-y-5">
-        <div className="contact-info-card"><h3>Call or Text</h3><a href={business.phoneHref}>{business.phone}</a><p>Discuss your project or arrange an estimate.</p></div>
-        <div className="contact-info-card"><h3>Email</h3><a href={`mailto:${business.email}`}>{business.email}</a><p>Send your project details or questions.</p></div>
-        <div className="contact-info-card"><h3>Service Area</h3><p className="font-semibold">Bryan, College Station &amp; surrounding areas</p></div>
-        <div className="contact-info-card"><h3>Business Hours</h3><p>Monday–Friday: 7 AM–6 PM<br />Saturday–Sunday: 8 AM–4 PM</p></div>
-      </div><div className="flex flex-wrap gap-5 mt-7 text-[var(--blade-green)] font-semibold"><a href={business.instagram} target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href={business.nextdoor} target="_blank" rel="noopener noreferrer">Nextdoor ↗</a></div></aside>
-    </div></div></section></>;
+  return (
+    <section className="estimate-page">
+      <div className="container-custom estimate-layout">
+        <div className="estimate-intro">
+          <span className="estimate-eyebrow">LET’S MAKE IT HAPPEN</span>
+          <h1>{commercial ? <>A better property.<br /><span>Starts here.</span></> : <>Your next outdoor<br /><span>improvement.</span></>}</h1>
+          <p className="estimate-lede">Tell us what you have in mind. Add a few photos, and we’ll get in touch to talk through your project and arrange a free estimate.</p>
+          <div className="estimate-promise"><span aria-hidden="true">✓</span> Free estimates. Clear scope. No pressure.</div>
+          <dl className="estimate-contact">
+            <div><dt>CALL OR TEXT</dt><dd><a href={business.phoneHref}>{business.phone}</a></dd></div>
+            <div><dt>EMAIL US</dt><dd><a href={`mailto:${business.email}`}>{business.email}</a></dd></div>
+            <div><dt>LOCAL TO YOUR PROPERTY</dt><dd>Bryan, College Station &amp; surrounding areas</dd></div>
+          </dl>
+          <p className="estimate-hours">Monday–Friday, 7 AM–6 PM<br />Saturday–Sunday, 8 AM–4 PM<br /><span>Send a request online anytime.</span></p>
+        </div>
+        <div className="estimate-card">
+          <ContactForm commercial={commercial} initialService={parameters.service} initialPlan={parameters.service === 'lawn-maintenance' ? lawnPlanById(parameters.plan) : undefined} />
+        </div>
+      </div>
+    </section>
+  );
 }
