@@ -11,8 +11,8 @@ const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(business.url),
-  ...pageMetadata('Lawn Care & Landscaping in College Station & Bryan', 'Lawn maintenance in College Station and Bryan from $60 per visit. Weekly and biweekly mowing, property care plans, sod, planting and patios. Get a free estimate.', '/'),
-  title: { default: 'Lawn Care & Landscaping in College Station & Bryan | Blade Landscaping', template: '%s | Blade Landscaping' },
+  ...pageMetadata('Landscaping & Lawn Care in College Station & Bryan', 'Landscape installations, patios, sod and lawn maintenance in College Station and Bryan. Plan a larger project or arrange recurring care. Request a free estimate.', '/'),
+  title: { default: 'Landscaping & Lawn Care in College Station & Bryan | Blade Landscaping', template: '%s | Blade Landscaping' },
   verification: { google: '05mOSF0LDQ4nfNV26qTiCidmnj8SghXj5ARHVkPUryo' },
   icons: { icon: '/BladeAndLeafDark.png', shortcut: '/BladeAndLeafDark.png', apple: '/BladeAndLeafDark.png' },
 };

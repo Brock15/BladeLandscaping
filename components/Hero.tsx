@@ -25,21 +25,21 @@ export default function Hero() {
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Lawn Care &amp;
+            Landscaping &amp;
             <br />
-            <span className="text-[var(--blade-lime)]">Landscaping</span>
+            <span className="text-[var(--blade-lime)]">Lawn Care</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-            Weekly and biweekly lawn maintenance in Bryan and College Station,
-            from $60 per visit. Mowing, clean edges, and care for the landscape around your home or business.
+            Landscape installations, patios, and outdoor improvements, plus weekly and
+            biweekly lawn care for homes and commercial properties in Bryan and College Station.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 sm:mb-12">
-            <Link href="/contact?service=lawn-maintenance" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-              Get a Lawn Care Estimate
+            <Link href="/contact" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+              Plan a Landscape Project
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -49,16 +49,16 @@ export default function Hero() {
                 />
               </svg>
             </Link>
-            <Link href="/services/lawn-maintenance#lawn-plans" className="btn-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-              Explore Lawn Care Plans
+            <Link href="/services/lawn-maintenance" className="btn-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+              Explore Lawn Care
             </Link>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-3xl mx-auto border-t border-white/15 pt-8">
             {[
-              { number: '$60', label: 'Minimum per Visit' },
-              { number: 'Routine', label: 'Weekly & Biweekly Care' },
+              { number: 'Projects', label: 'Landscape Installation' },
+              { number: 'Care', label: 'Lawn Maintenance' },
               { number: 'Free', label: 'Property Estimates' },
               { number: 'Direct', label: 'Owner Communication' },
             ].map((stat) => (
