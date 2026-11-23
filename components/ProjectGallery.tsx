@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef, useState, type KeyboardEvent } from 'react';
 import { projects, type Project } from '@/lib/projects';
 import { projectClips } from '@/lib/project-clips';
@@ -12,6 +13,7 @@ function ProjectCard({ project, onOpen }: { project: Project; onOpen: (source: s
   return <article id={project.id} className="min-w-0 bg-white rounded-2xl overflow-hidden shadow-lg">
     <button type="button" className="gallery-image-button" aria-label={`Open ${project.title} photo`} onClick={(event) => onOpen(project.images[0].src, event.currentTarget)}><Image src={project.images[0].src} alt={project.images[0].alt} width={project.images[0].width} height={project.images[0].height} sizes="(max-width: 639px) 90vw, (max-width: 1023px) 45vw, 30vw" className="w-full aspect-[4/3] object-cover" /><span className="gallery-open-label">View Photo <span aria-hidden="true">↗</span></span></button>
     <div className="p-5 sm:p-6"><p className="text-xs font-semibold uppercase tracking-wider text-[var(--blade-green)] mb-2">{project.category}</p><h3 className="text-xl font-bold text-[var(--blade-charcoal)] mb-3">{project.title}</h3><p className="text-sm text-[var(--blade-gray)] leading-relaxed">{project.caption}</p>
+      {project.id === 'flagstone-patio' && <Link href="/projects/college-station-flagstone-patio" className="inline-block mt-5 font-semibold text-[var(--blade-green)] hover:underline">See the College Station project →</Link>}
       {project.images.length > 1 && <div className="grid grid-cols-3 gap-2 mt-5">{project.images.slice(1).map((picture, index) => <button key={picture.src} type="button" aria-label={`Open ${project.title} photo ${index + 2}`} className="rounded-lg overflow-hidden" onClick={(event) => onOpen(picture.src, event.currentTarget)}><Image src={picture.src} alt={picture.alt} width={120} height={120} sizes="100px" className="w-full aspect-square object-cover" /></button>)}</div>}
     </div>
   </article>;

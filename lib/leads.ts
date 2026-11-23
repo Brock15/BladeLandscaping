@@ -1,13 +1,14 @@
 export const budgetOptions = ['Under $2,500', '$2,500–$5,000', '$5,000–$10,000', '$10,000–$20,000', '$20,000+', 'Not sure yet'];
 export const timelineOptions = ['As soon as possible', 'Within 30 days', '1–3 months', 'Planning for the future'];
 export const projectOptions = [
+  ['lawn-maintenance', 'Lawn maintenance'],
+  ['sod-installation', 'Sod installation'],
   ['landscape-installation', 'Landscape installation'],
   ['landscape-renovations', 'Landscape renovation'],
   ['hardscaping-outdoor-living', 'Patios & hardscaping'],
   ['drainage-grading', 'Drainage & grading'],
   ['rock-stone-landscaping', 'Rock & stone landscaping'],
   ['commercial-landscaping', 'Commercial landscaping'],
-  ['lawn-maintenance', 'Lawn maintenance'],
   ['cleanup-removal', 'Property cleanup & removal'],
   ['other', 'Other / help planning my project'],
 ] as const;

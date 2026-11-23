@@ -17,6 +17,25 @@ export type Service = {
 
 export const services: Service[] = [
   {
+    slug: 'sod-installation', number: '08', title: 'Sod Installation', shortTitle: 'Sod installation',
+    summary: 'New sod and lawn replacement for residential and commercial properties in Bryan and College Station.',
+    introduction: 'Give a new lawn the preparation it needs.',
+    detail: 'A sod project starts with the lawn area, rather than the rolls of grass. We review existing vegetation, the ground surface, sun exposure, equipment access, and how you will water the new lawn. Your estimate defines removal, soil preparation, sod placement, and the care responsibilities included in the work.',
+    offerings: [
+      { title: 'New lawn areas', description: 'Bring lawn into a new or unfinished yard with sod selected for the site and agreed project scope.' },
+      { title: 'Lawn replacement', description: 'Review worn or bare areas, the existing grass, and preparation needed before replacing an agreed section of lawn.' },
+      { title: 'Preparation & finishing', description: 'Plan removal, surface preparation, placement, and transitions beside paths, beds, and existing lawn areas.' },
+    ],
+    considerations: 'Watering access and establishment care matter from the first day. We confirm your responsibilities and any included follow-up before installation.',
+    questions: [
+      { question: 'Do you install sod in College Station and Bryan?', answer: 'Yes. We serve properties in both cities. Send photos, an approximate lawn area, and your property location so we can review the work and arrange the next step.' },
+      { question: 'How much does sod installation cost?', answer: 'Pricing depends on the area, removal, ground preparation, sod selection, and access. Request a property-specific estimate; our $60 lawn mowing minimum is separate from sod installation pricing.' },
+      { question: 'Can sod fix recurring bare patches?', answer: 'We first discuss shade, water, wear, and the existing ground. New sod needs conditions that support it, so replacing grass alone may not address the reason an area is struggling.' },
+      { question: 'Who waters the new sod?', answer: 'We agree on watering responsibilities and establishment guidance before work begins. Tell us about your water access and any irrigation limitations during the estimate.' },
+    ],
+    image: '/media/optimized/sod.webp', imageAlt: 'Fresh sod installed across a residential lawn by Blade Landscaping', imageCaption: 'A lawn installation from the Blade project gallery.',
+  },
+  {
     slug: 'landscape-installation', number: '01', title: 'Landscape Installation', shortTitle: 'Landscape installation',
     summary: 'Bring a new landscape together with planting, fresh sod, defined beds, and thoughtful material choices.',
     introduction: 'A fresh landscape starts with a plan for your property.',
@@ -142,7 +161,7 @@ export const services: Service[] = [
     ],
     image: '/media/ready/lawn-maintenance.webp', imageAlt: 'Blade team member operating a stand-on mower on a residential lawn', imageCaption: 'Mowing and routine lawn care with Blade Landscaping.', imagePosition: '50% 40%',
   },
-];
+].sort((a, b) => Number(a.number) - Number(b.number));
 
 export const processSteps = [
   { title: 'Request an estimate', description: 'Tell us about your property, priorities, and the improvements you have in mind.' },

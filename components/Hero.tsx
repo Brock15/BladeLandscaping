@@ -1,16 +1,6 @@
-'use client';
-
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 export default function Hero() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const animationFrame = requestAnimationFrame(() => setIsVisible(true));
-    return () => cancelAnimationFrame(animationFrame);
-  }, []);
-
   return (
     <section className="relative min-h-[92svh] flex items-center justify-center overflow-hidden pt-28 pb-8 sm:pt-36 sm:pb-12">
       {/* Background Gradient (fallback) */}
@@ -26,11 +16,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="container-custom relative z-10 text-center text-white">
-        <div
-          className={`transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
+        <div>
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-7 border border-white/10">
             <span className="w-2 h-2 bg-[var(--blade-green-light)] rounded-full animate-pulse" />
@@ -39,21 +25,21 @@ export default function Hero() {
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-            Transform Your
+            Lawn Care &amp;
             <br />
-            <span className="text-[var(--blade-lime)]">Outdoor Space</span>
+            <span className="text-[var(--blade-lime)]">Landscaping</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed">
-            Landscape installations, property renovations, and outdoor improvements
-            for homes and commercial properties throughout Bryan–College Station.
+            Weekly and biweekly lawn maintenance in Bryan and College Station,
+            from $60 per visit. Mowing, clean edges, and care for the landscape around your home or business.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10 sm:mb-12">
-            <Link href="/contact" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-              Request a Project Estimate
+            <Link href="/contact?service=lawn-maintenance" className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+              Get a Lawn Care Estimate
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -63,25 +49,22 @@ export default function Hero() {
                 />
               </svg>
             </Link>
-            <Link href="/gallery" className="btn-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
-              View Our Work
+            <Link href="/services/lawn-maintenance#lawn-plans" className="btn-white text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+              Explore Lawn Care Plans
             </Link>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-3xl mx-auto border-t border-white/15 pt-8">
             {[
-              { number: 'Local', label: 'Owner-Operated' },
-              { number: 'On-Site', label: 'Project Consultations' },
-              { number: 'Custom', label: 'Property Improvements' },
+              { number: '$60', label: 'Minimum per Visit' },
+              { number: 'Routine', label: 'Weekly & Biweekly Care' },
+              { number: 'Free', label: 'Property Estimates' },
               { number: 'Direct', label: 'Owner Communication' },
-            ].map((stat, index) => (
+            ].map((stat) => (
               <div
                 key={stat.label}
-                className={`text-center transition-all duration-700 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                className="text-center"
               >
                 <div className="text-2xl md:text-3xl font-bold text-[var(--blade-lime)] mb-1">
                   {stat.number}

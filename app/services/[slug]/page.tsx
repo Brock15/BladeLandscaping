@@ -4,7 +4,10 @@ import InstallationService from '@/components/InstallationService';
 import { installationPageDetails } from '@/lib/service-page-details';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { services } from '@/lib/services';
+import { services, type Service } from '@/lib/services';
+import JsonLd from '@/components/JsonLd';
+import RelatedServices from '@/components/RelatedServices';
+import { breadcrumbs, serviceSchema, serviceSearchCopy } from '@/lib/seo';
 import { pageMetadata } from '@/lib/site';
 import ProjectProcess from '@/components/ProjectProcess';
 import ContactCTA from '@/components/ContactCTA';
@@ -20,19 +23,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
-  return pageMetadata(`${service.title} in Bryan–College Station`, `${service.summary} Discuss your project with Blade Landscaping in Bryan, College Station, and surrounding communities.`, `/services/${slug}`);
+  const copy = serviceSearchCopy[slug];
+  return pageMetadata(copy?.title || `${service.title} in College Station & Bryan`, copy?.description || `${service.summary} Serving Bryan and College Station, Texas. Request a free estimate from Blade Landscaping.`, `/services/${slug}`, service.image);
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
+  return <><JsonLd data={serviceSchema(service)} /><JsonLd data={breadcrumbs([{ name: 'Home', path: '/' }, { name: 'Services', path: '/services' }, { name: service.title, path: `/services/${slug}` }])} /><ServiceContent service={service} /><RelatedServices current={slug} /></>;
+}
+
+function ServiceContent({ service }: { service: Service }) {
+  const slug = service.slug;
   const commercial = slug === 'commercial-landscaping';
   if (slug === 'lawn-maintenance') return <LawnMaintenance />;
   if (installationPageDetails[slug]) return <InstallationService service={service} details={installationPageDetails[slug]} />;
   const estimateURL = estimateHref(slug, commercial);
   return <>
-    <section className="relative pt-32 pb-20 bg-[var(--blade-charcoal)] overflow-hidden"><div className="absolute inset-0 bg-gradient-to-br from-[var(--blade-green-dark)]/30 to-transparent" /><div className="container-custom relative z-10"><div className="max-w-4xl mx-auto text-center"><Link href="/services" className="inline-block text-[var(--blade-lime)] text-sm mb-6 hover:underline">← All Services</Link><h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">{service.title}</h1><p className="text-xl text-white/75 max-w-3xl mx-auto leading-relaxed">{service.summary}</p><p className="text-white/65 text-sm mt-5">Serving Bryan, College Station & surrounding communities</p><Link href={estimateURL} className="btn-primary mt-8">{commercial ? 'Request a Commercial Proposal' : 'Request a Project Estimate'} <span aria-hidden="true">→</span></Link></div></div></section>
+    <section className="relative pt-32 pb-20 bg-[var(--blade-charcoal)] overflow-hidden"><div className="absolute inset-0 bg-gradient-to-br from-[var(--blade-green-dark)]/30 to-transparent" /><div className="container-custom relative z-10"><div className="max-w-4xl mx-auto text-center"><Link href="/services" className="inline-block text-[var(--blade-lime)] text-sm mb-6 hover:underline">← All Services</Link><h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">{service.title}</h1><p className="text-xl text-white/75 max-w-3xl mx-auto leading-relaxed">{service.summary}</p><p className="text-white/65 text-sm mt-5">Serving Bryan and College Station, Texas</p><Link href={estimateURL} className="btn-primary mt-8">{commercial ? 'Request a Commercial Proposal' : 'Request a Project Estimate'} <span aria-hidden="true">→</span></Link></div></div></section>
     <section className="section-padding bg-white"><div className="container-custom"><div className={`grid ${service.image ? 'lg:grid-cols-2' : ''} gap-12 items-center`}><div><span className="text-[var(--blade-green)] font-semibold text-sm uppercase tracking-wider">The Work in Focus</span><h2 className="text-3xl md:text-4xl font-bold text-[var(--blade-charcoal)] mt-4 mb-6">{service.introduction}</h2><p className="text-[var(--blade-gray)] text-lg leading-relaxed">{service.detail}</p><Link href={estimateURL} className="inline-flex items-center gap-2 text-[var(--blade-green)] font-semibold mt-7 hover:underline">Discuss your project <span aria-hidden="true">→</span></Link></div>{service.image && <figure><div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg"><Image src={service.image} alt={service.imageAlt || ''} fill sizes="(max-width: 1024px) 90vw, 45vw" className="object-cover" style={{ objectPosition: service.imagePosition }} /></div><figcaption className="text-sm text-[var(--blade-gray)] mt-3">{service.imageCaption}</figcaption></figure>}</div></div></section>
     <section className="section-padding bg-[var(--blade-off-white)]"><div className="container-custom"><h2 className="text-3xl md:text-4xl font-bold text-[var(--blade-charcoal)] mb-10">What We Can Discuss</h2><div className="grid md:grid-cols-3 gap-7">{service.offerings.map((offering) => <article className="rounded-2xl bg-white shadow-lg p-7" key={offering.title}><h3 className="text-xl font-bold text-[var(--blade-charcoal)] mb-4">{offering.title}</h3><p className="text-[var(--blade-gray)] leading-relaxed">{offering.description}</p></article>)}</div><p className="mt-9 p-5 rounded-xl border border-[var(--blade-green)]/15 text-[var(--blade-gray)] leading-relaxed">{service.considerations}</p></div></section>
     <ProjectProcess commercial={commercial} service={slug} />

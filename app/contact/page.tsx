@@ -19,7 +19,7 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           <dl className="estimate-contact">
             <div><dt>CALL OR TEXT</dt><dd><a href={business.phoneHref}>{business.phone}</a></dd></div>
             <div><dt>EMAIL US</dt><dd><a href={`mailto:${business.email}`}>{business.email}</a></dd></div>
-            <div><dt>LOCAL TO YOUR PROPERTY</dt><dd>Bryan, College Station &amp; surrounding areas</dd></div>
+            <div><dt>LOCAL TO YOUR PROPERTY</dt><dd>Bryan and College Station, Texas</dd></div>
           </dl>
           <p className="estimate-hours">Monday–Friday, 7 AM–6 PM<br />Saturday–Sunday, 8 AM–4 PM<br /><span>Send a request online anytime.</span></p>
         </div>

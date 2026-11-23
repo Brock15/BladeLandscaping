@@ -31,11 +31,6 @@ const reviewArchive: CustomerReview[] = [
     sourceUrl: 'https://share.google/cx8K3bBnHwvybGK59',
   },
   {
-    id: 'jackson-phillips', name: 'Jackson Phillips', source: 'Google', rating: 5, initials: 'JP', color: 'bg-sky-700',
-    text: 'Gave a fair price for much installation and did a great job.',
-    sourceUrl: 'https://share.google/ljSWV8jeTotSrPB61',
-  },
-  {
     id: 'fed-bread', name: 'Fed Bread', source: 'Google', rating: 5, initials: 'F', color: 'bg-orange-600',
     text: 'Spoke to Brock about specific yard related issues, he was able to get Sam to complete the job. Sam did an excellent job within a couple of hours, moving & spreading 61 bags of stones(30lb bags ea), spreading 2 wheelbarrow loads of sand & moving 6 large flagstones into another spot. Will use again!',
     photos: ['/reviews/fed-bread-1.png', '/reviews/fed-bread-2.png', '/reviews/fed-bread-3.png'],
@@ -61,31 +56,11 @@ const reviewArchive: CustomerReview[] = [
     text: 'I was needing someone to do some landscape work. The company that usually does my work is so busy they can\'t get to me. I saw Brock\'s advertisement on Nextdoor and took a chance. This is a group of late high school age gentlemen. I hired Brock and crew to pull bamboo, lay landscape fabric, and mulch. They did a very nice job at a very reasonable price, were professional, polite, and hardworking. They cleaned up afterwards and left the job site spotless. Highly recommend.',
   },
   {
-    id: 'ava-weinstein', name: 'Ava Weinstein', source: 'Google', rating: 5, initials: 'AW', color: 'bg-pink-600',
-    text: 'Blair and his team did an amazing job moving our heavy furniture, boxes, art and many other household items. We had a big job for them and they did it professionally and saw it through to the end. I highly recommend them for any moving needs. Thank you!',
-  },
-  {
     id: 'saundra-edwards', name: 'Saundra Edwards', source: 'Nextdoor', rating: 5, initials: 'SE', color: 'bg-emerald-600',
     text: 'I was very pleased with help planting three shrubs in my yard recently. These high school guys have integrity and a desire to do a good job. So refreshing!!',
   },
-  {
-    id: 'maria-rodriguez', name: 'Maria Rodriguez', source: 'Testimonial', rating: 5, initials: 'MR', color: 'bg-emerald-500',
-    text: 'Blade Landscaping transformed our backyard into a beautiful oasis. Their attention to detail and professionalism exceeded our expectations. Highly recommend!',
-    location: 'Stone Oak, San Antonio',
-  },
-  {
-    id: 'james-thompson', name: 'James Thompson', source: 'Testimonial', rating: 5, initials: 'JT', color: 'bg-blue-500',
-    text: 'Outstanding service from start to finish. The team was punctual, courteous, and did an amazing job with our lawn. Best landscaping service in San Antonio!',
-    location: 'Alamo Heights, San Antonio',
-  },
-  {
-    id: 'sarah-chen', name: 'Sarah Chen', source: 'Testimonial', rating: 5, initials: 'SC', color: 'bg-purple-500',
-    text: 'We\'ve used many landscapers over the years, but Blade Landscaping is by far the best. Fair pricing, excellent work, and great communication throughout.',
-    location: 'The Dominion, San Antonio',
-  },
 ];
 
-const excludedReviewIds = new Set(['jackson-phillips', 'ava-weinstein', 'maria-rodriguez', 'james-thompson', 'sarah-chen']);
-export const customerReviews = reviewArchive.filter((review) => !excludedReviewIds.has(review.id));
+export const customerReviews = reviewArchive;
 
 export const featuredReviews = ['william-rupley', 'viki-coumbe', 'art-scott'].map((id) => customerReviews.find((review) => review.id === id)!);

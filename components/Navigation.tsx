@@ -7,6 +7,7 @@ import EstimateLink from './EstimateLink';
 
 const navLinks = [
   { href: '/', label: 'Home' },
+  { href: '/services/lawn-maintenance', label: 'Lawn Care' },
   { href: '/services', label: 'Services' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/about', label: 'About' },
@@ -54,6 +55,7 @@ export default function Navigation() {
                 src="/BladeAndLeaf.png"
                 alt="Blade Landscaping"
                 fill
+                sizes="(max-width: 639px) 48px, 64px"
                 className="object-contain"
                 priority
               />
@@ -65,7 +67,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -83,7 +85,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden flex flex-col gap-1.5 p-2"
+            className="xl:hidden flex flex-col gap-1.5 p-2"
             aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
@@ -102,7 +104,7 @@ export default function Navigation() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div id="mobile-navigation" className="lg:hidden mobile-menu-enter mt-4 pb-4 border-t border-white/20">
+          <div id="mobile-navigation" className="xl:hidden mobile-menu-enter mt-4 pb-4 border-t border-white/20">
             <div className="flex flex-col gap-4 pt-4">
               {navLinks.map((link) => (
                 <Link

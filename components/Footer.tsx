@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { services } from '@/lib/services';
+import { business } from '@/lib/site';
 import EstimateLink from './EstimateLink';
 
 const quickLinks = [
@@ -25,14 +26,15 @@ export default function Footer() {
                   src="/BladeAndLeaf.png"
                   alt="Blade Landscaping"
                   fill
+                  sizes="48px"
                   className="object-contain"
                 />
               </div>
               <span className="text-xl font-bold">Blade Landscaping</span>
             </Link>
             <p className="text-[var(--blade-silver)] mb-6 leading-relaxed">
-              Landscape installation, renovation, and outdoor improvements for homes and
-              commercial properties in Bryan–College Station.
+              Lawn maintenance, landscape installation, and outdoor improvements for homes and
+              commercial properties in Bryan and College Station, Texas.
             </p>
             <div className="text-xs uppercase tracking-[0.2em] text-white/50 mb-3">
               Follow our latest projects
@@ -50,7 +52,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://nextdoor.com/pages/blade_landscaping-san-antonio-tx/"
+                href={business.nextdoor}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[var(--blade-slate)] flex items-center justify-center hover:bg-[var(--blade-green)] transition-colors"
@@ -67,7 +69,7 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-6">Our Services</h3>
             <ul className="space-y-3">
-              {services.map((service) => (
+              {[...services.filter(service => service.slug === 'lawn-maintenance'), ...services.filter(service => service.slug !== 'lawn-maintenance')].map((service) => (
                 <li key={service.slug}>
                   <Link
                     href={`/services/${service.slug}`}

@@ -19,7 +19,7 @@ export default function InstallationService({ service, details }: { service: Ser
             <p>{details.summary}</p>
             <div className="lawn-hero-actions">
               <Link href={estimateURL} className="btn-primary">Request a free estimate <span aria-hidden="true">→</span></Link>
-              <Link href={`/gallery#${details.galleryProject}`} className="lawn-text-link">See our work</Link>
+              <Link href={service.slug === 'hardscaping-outdoor-living' ? '/projects/college-station-flagstone-patio' : `/gallery#${details.galleryProject}`} className="lawn-text-link">See our work</Link>
             </div>
             <div className="lawn-hero-notes"><span>Residential &amp; commercial</span><span>Free estimates</span></div>
           </div>

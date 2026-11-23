@@ -8,8 +8,8 @@ export default function Services() {
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="section-eyebrow">What We Do</span>
-          <h2 className="section-title">Make More of Your Outdoors</h2>
-          <p className="section-description">Landscape installations, natural stone, lawn maintenance, and outdoor improvements for homes and commercial properties.</p>
+          <h2 className="section-title">A Better-Kept Lawn. A More Usable Yard.</h2>
+          <p className="section-description">Start with routine lawn care in Bryan and College Station. Explore sod, stone, and patio installations when it’s time for a bigger change.</p>
         </div>
         <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-7">
           {serviceCards.map((service) => (

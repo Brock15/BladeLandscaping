@@ -10,7 +10,8 @@ const isLocalPreview = process.env.NODE_ENV === 'development';
 const FORM_ENDPOINT = isLocalPreview ? '/api/estimate-preview' : '/api/estimate';
 const steps = ['Your project', 'Your property', 'Your details'];
 const choiceLabels: Record<string, string> = {
-  'landscape-installation': 'Sod & planting',
+  'landscape-installation': 'Planting & landscaping',
+  'sod-installation': 'Sod installation',
   'landscape-renovations': 'Beds & mulch',
   'hardscaping-outdoor-living': 'Patios & hardscaping',
   'drainage-grading': 'Drainage & grading',
